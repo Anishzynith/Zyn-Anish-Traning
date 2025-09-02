@@ -1,0 +1,47 @@
+page 50150 Leave_Category_Card
+{
+    PageType = Card;
+    ApplicationArea = All;
+    UsageCategory = Administration;
+    SourceTable = Leave_Category_Table;
+    
+    layout
+    {
+        area(Content)
+        {
+            group(GroupName)
+            {
+                field(Leave_Description; Rec.Leave_Description)
+                {
+                    ApplicationArea = All;
+                }
+                field(Leave_Category_Name; Rec.Leave_Category_Name)
+                {
+                    ApplicationArea = All;
+                }
+                field(Number_of_Days; Rec.Number_of_Days)
+                {
+                    ApplicationArea = All;
+                }
+            }
+        }
+    }
+    
+    actions
+    {
+        area(Processing)
+        {
+            action(ActionName)
+            {
+                
+                trigger OnAction()
+                begin
+                    
+                end;
+            }
+        }
+    }
+    
+    var
+        myInt: Integer;
+}
