@@ -65,6 +65,35 @@ page 50175 Customer_Page_Fact
         }
     }
 
+    var
+        sales: Record "Sales Header";
+        salesline: record "sales line";
+
+        WorkMonth: Integer;
+        WorkYear: Integer;
+
+    // local procedure RevenueGenerated(): Decimal
+    // var
+    //     totamount: Decimal;
+
+    // begin
+
+    //     WorkMonth := Date2DMY(WorkDate(), 2);
+    //     WorkYear := Date2DMY(WorkDate(), 3);
+
+    //     sales.Reset();
+    //     sales.SetRange("From Subscription", true);
+    //     sales.SetRange("Document Date", DMY2Date(1, WorkMonth, WorkYear),
+    //                                 DMY2Date(31, WorkMonth, WorkYear));
+    //     if sales.FindSet() then begin
+    //         repeat
+    //             sales.CalcFields(Amount);
+    //             totamount += sales.Amount;
+    //         until sales.Next() = 0;
+    //     end;
+    //     exit(totamount)
+    // end;
+
 
 
     local procedure GetActiveCount(): Integer
