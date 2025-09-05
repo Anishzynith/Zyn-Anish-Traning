@@ -23,6 +23,11 @@ pageextension 50127 "Customer CardExt" extends "Customer List"
                 ApplicationArea = All;
                 SubPageLink = "No." = FIELD("No.");
             }
+            part(Active_Subscription; Customer_Page_Fact)
+            {
+                ApplicationArea = all;
+
+            }
         }
     }
 }

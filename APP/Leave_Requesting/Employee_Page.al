@@ -1,4 +1,4 @@
-page 50149 Employee_Page
+page 50167 Employee_Page
 {
     PageType = List;
     ApplicationArea = All;
@@ -29,12 +29,16 @@ page 50149 Employee_Page
                 {
                     ApplicationArea = all;
                 }
-                
+
             }
         }
-        area(Factboxes)
+        area(factboxes)
         {
-
+            part(EmployeeAssetSummary; Asset_History_FactBox)
+            {
+                SubPageLink = Employee_ID = FIELD(Employee_ID);
+                ApplicationArea = All;
+            }
         }
     }
 
