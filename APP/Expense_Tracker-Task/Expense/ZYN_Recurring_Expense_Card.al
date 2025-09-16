@@ -4,7 +4,6 @@ page 50147 Recurring_Expense_Card
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = Recurring_Expense_Table;
-
     layout
     {
         area(Content)
@@ -30,12 +29,8 @@ page 50147 Recurring_Expense_Card
                 field(Next_Cycle_Date; Rec.Next_Cycle_Date)
                 {
                     ApplicationArea = All;
-
                 }
             }
         }
-
-
-      
     }
 }

@@ -4,13 +4,11 @@ report 50103 "Expense_Tracker_Report"
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
     ProcessingOnly = true;
-
     dataset
     {
         dataitem(Expense_Tracker; Expense_Tracker)
         {
             DataItemTableView = sorting(Expense_ID);
-
             trigger OnAfterGetRecord()
             begin
                 if (Expense_Tracker.ExpenseDate >= StartDate) and (Expense_Tracker.ExpenseDate <= EndDate) then begin
@@ -20,7 +18,6 @@ report 50103 "Expense_Tracker_Report"
                         ExcelBuffer.AddColumn(Expense_Tracker.ExpenseDate, FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Date);
                         ExcelBuffer.AddColumn(Expense_Tracker.ExpenseAmount, FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
                         ExcelBuffer.NewRow();
-
                         // Track total for selected category
                         TotalAmount += Expense_Tracker.ExpenseAmount;
                         RecordsFound := true;
@@ -29,7 +26,6 @@ report 50103 "Expense_Tracker_Report"
             end;
         }
     }
-
     requestpage
     {
         layout
@@ -58,7 +54,6 @@ report 50103 "Expense_Tracker_Report"
             }
         }
     }
-
     var
         StartDate: Date;
         EndDate: Date;
@@ -72,7 +67,6 @@ report 50103 "Expense_Tracker_Report"
         ExcelBuffer.DeleteAll();
         TotalAmount := 0;
         RecordsFound := false;
-
         // Header row
         ExcelBuffer.AddColumn('Expense Category', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn('Date', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Date);
@@ -94,11 +88,7 @@ report 50103 "Expense_Tracker_Report"
             ExcelBuffer.AddColumn(TotalAmount, FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
             ExcelBuffer.NewRow();
         end;
-
-        FileName := 'Expense_Report_' +
-                    (CategoryFilter <> '' ? CategoryFilter : 'All') + '_' +
-                    Format(Today, 0, '<Year4><Month,2><Day,2>') + '.xlsx';
-
+        FileName := 'Expense_Report_' + (CategoryFilter <> '' ? CategoryFilter : 'All') + '_' + Format(Today, 0, '<Year4><Month,2><Day,2>') + '.xlsx';
         ExcelBuffer.CreateNewBook('Expense Tracker Report');
         ExcelBuffer.WriteSheet('Expenses', CompanyName, UserId);
         ExcelBuffer.CloseBook();

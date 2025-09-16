@@ -5,7 +5,6 @@ page 50109 "Customer Sales FactBox"
     //  SourceTableTemporary = true; // ✅ Temp table
     ApplicationArea = All;
     Caption = 'Customer Sales Overview';
-
     layout
     {
         area(content)
@@ -22,9 +21,6 @@ page 50109 "Customer Sales FactBox"
                     var
                         ContactRec: Record Contact;
                     begin
-                        // if ContactNo <> '' then
-                        //     if ContactRec.Get(ContactNo) then
-                        //         PAGE.Run(PAGE::"Contact Card", ContactRec);
                         if Rec."Primary Contact No." <> '' then
                             if ContactRec.Get(Rec."Primary Contact No.") then
                                 PAGE.Run(PAGE::"Contact Card", ContactRec);
@@ -39,16 +35,11 @@ page 50109 "Customer Sales FactBox"
                     var
                         ContactRec: Record Contact;
                     begin
-                        // if ContactNo <> '' then
-                        //     if ContactRec.Get(ContactNo) then
-                        //         PAGE.Run(PAGE::"Contact Card", ContactRec);
                         if Rec."Primary Contact No." <> '' then
                             if ContactRec.Get(Rec."Primary Contact No.") then
                                 PAGE.Run(PAGE::"Contact Card", ContactRec);
                     end;
-
                 }
-
             }
             cuegroup("Sales Documents")
             {
@@ -66,7 +57,6 @@ page 50109 "Customer Sales FactBox"
                         PAGE.Run(PAGE::"Sales Order List", SalesHeader);
                     end;
                 }
-
                 field(OpenSalesInvoicesCount; OpenSalesInvoicesCount)
                 {
                     ApplicationArea = All;
@@ -80,12 +70,10 @@ page 50109 "Customer Sales FactBox"
                         SalesHeader.SetRange(Status, SalesHeader.Status::Open);
                         PAGE.Run(PAGE::"Sales Invoice List", SalesHeader);
                     end;
-
                 }
             }
         }
     }
-
     var
         ContactNo: Code[20];
         ContactName: Text[100];
@@ -98,7 +86,6 @@ page 50109 "Customer Sales FactBox"
         SalesHeader: Record "Sales Header";
         SalesInvHeader: Record "Sales Invoice Header";
         ContactRec: Record Contact;
-
     begin
         // Find Contact linked to Customer
         Clear(ContactNo);
@@ -111,16 +98,13 @@ page 50109 "Customer Sales FactBox"
             if ContactRec.Get(ContactNo) then
                 ContactName := ContactRec.Name;
             contentVisible := true;
-
         end;
-
         // Count Open Sales Orders
         SalesHeader.Reset();
         SalesHeader.SetRange("Document Type", SalesHeader."Document Type"::Order);
         SalesHeader.SetRange("Sell-to Customer No.", Rec."No.");
         SalesHeader.SetFilter(Status, '%1|%2', SalesHeader.Status::Open, SalesHeader.Status::Released);
         OpenSalesOrdersCount := SalesHeader.Count;
-
         // Count Unposted Sales Invoices
         SalesHeader.Reset();
         SalesHeader.SetRange("Document Type", SalesHeader."Document Type"::Invoice);

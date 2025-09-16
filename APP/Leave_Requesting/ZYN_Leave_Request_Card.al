@@ -4,7 +4,6 @@ page 50152 Leave_Request_Card
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = Leave_Request_Table;
-
     layout
     {
         area(Content)
@@ -39,33 +38,12 @@ page 50152 Leave_Request_Card
                 {
                     ApplicationArea = All;
                     Editable = false;
-
-
                 }
             }
         }
     }
-
-    actions
-    {
-        area(Processing)
-        {
-            action(ActionName)
-            {
-
-                trigger OnAction()
-                begin
-
-                end;
-            }
-        }
-    }
-
     trigger OnAfterGetRecord()
     begin
         Rec.UpdateRemainingBalance();   // ✅ page-level trigger
     end;
-
-    var
-        myInt: Integer;
 }

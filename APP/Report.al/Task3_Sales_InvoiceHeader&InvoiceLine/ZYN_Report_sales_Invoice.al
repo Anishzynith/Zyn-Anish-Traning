@@ -4,8 +4,6 @@ report 50102 "Sales_InvoiceHeaderandLine"
     ApplicationArea = All;
     DefaultLayout = RDLC;
     RDLCLayout = 'Sales_InvoiceHeader_InvoiceLine.rdl';
-
-
     dataset
     {
         dataitem("SalesInvHeader"; "Sales Invoice Header")
@@ -20,7 +18,6 @@ report 50102 "Sales_InvoiceHeaderandLine"
                 column(logo; Picture) { }
                 column(Address; Address) { }
             }
-
             // Invoice Lines
             dataitem("SalesInvLine"; "Sales Invoice Line")
             {
@@ -38,11 +35,7 @@ report 50102 "Sales_InvoiceHeaderandLine"
                 column(Amount; Amount) { }
                 column(Remaining_Amount; "Remaining Amount") { }
             }
-
             // Company Info inside Line (if you want to repeat per line)
-
-
-
             // BEGINNING TEXT (OUTSIDE Line loop)
             dataitem(BeginningText; "Sales Invoice Text Code")
             {
@@ -51,7 +44,6 @@ report 50102 "Sales_InvoiceHeaderandLine"
                 column(Begin_Text; "Text") { }
                 column(BeginLineNo; lineNO) { }
             }
-
             // ENDING TEXT (ALSO OUTSIDE Line loop)
             dataitem(EndingText; "Sales Invoice Text Code")
             {

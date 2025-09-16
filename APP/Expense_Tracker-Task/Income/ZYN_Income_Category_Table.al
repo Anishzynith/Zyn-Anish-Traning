@@ -1,7 +1,6 @@
 table 50122 Income_Category_Table
 {
     DataClassification = ToBeClassified;
-
     fields
     {
         field(1; IncomeCategory_ID; Integer)
@@ -19,7 +18,6 @@ table 50122 Income_Category_Table
             DataClassification = ToBeClassified;
         }
     }
-
     keys
     {
         key(PK; IncomeCategory_Name)
@@ -31,5 +29,4 @@ table 50122 Income_Category_Table
     {
         fieldgroup(DropDown; IncomeCategory_Name) { }
     }
-
 }

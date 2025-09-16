@@ -3,8 +3,6 @@ report 50100 "Orders By Date"
     ProcessingOnly = true; // No print, only logic
     ApplicationArea = All;
     UsageCategory = ReportsAndAnalysis;
-
-
     // Loop through Sales Orders
     dataset
     {
@@ -20,10 +18,8 @@ report 50100 "Orders By Date"
                 SalesHeader.Modify();
                 orderCount := OrderCount + 1;
             end;
-
         }
     }
-
     // Show a page before running, to take date input
     requestpage
     {
@@ -42,12 +38,10 @@ report 50100 "Orders By Date"
             }
         }
     }
-
     // Variables used
     var
         SelectedDate: Date;
         OrderCount: Integer;
-
     // Runs after checking all records
     trigger OnPostReport()
     begin

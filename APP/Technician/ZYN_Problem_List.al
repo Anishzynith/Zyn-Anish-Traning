@@ -5,7 +5,6 @@ page 50119 "ProblemList"
     CardPageId = "ProblemCard";
     ApplicationArea = all;
     Caption = 'Problem List';
-
     // InsertAllowed = false;
     // DeleteAllowed = false;
     layout
@@ -26,7 +25,6 @@ page 50119 "ProblemList"
                 {
                     Caption = 'Issue';
                     // Editable = true;
-
                 }
                 field(Issuse_Department; Rec.Issuse_Department)
                 {
@@ -35,7 +33,6 @@ page 50119 "ProblemList"
                 }
                 field(Technician_Name; Rec.Technician_Name)
                 {
-
                     Caption = 'Technician Name';
                     // Editable = true;
                 }

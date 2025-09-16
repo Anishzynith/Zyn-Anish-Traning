@@ -5,7 +5,6 @@ page 50155 Asset_Page
     UsageCategory = Lists;
     SourceTable = Asset_Table;
     CardPageId = Asset_Card;
-
     layout
     {
         area(Content)
@@ -21,25 +20,6 @@ page 50155 Asset_Page
                 {
                     ApplicationArea = all;
                 }
-            }
-        }
-        area(Factboxes)
-        {
-
-        }
-    }
-
-    actions
-    {
-        area(Processing)
-        {
-            action(ActionName)
-            {
-
-                trigger OnAction()
-                begin
-
-                end;
             }
         }
     }

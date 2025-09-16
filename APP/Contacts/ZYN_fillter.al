@@ -4,10 +4,8 @@ page 50123 "Filtered Contact List"
     SourceTable = Contact;
     ApplicationArea = All;
     UsageCategory = None;
-
     Editable = false;
     InsertAllowed = false;
-
     layout
     {
         area(content)
@@ -24,10 +22,5 @@ page 50123 "Filtered Contact List"
                 field("territory code"; rec."Territory Code") { }
             }
         }
-    }
-
-    actions
-    {
-        // No actions defined
     }
 }

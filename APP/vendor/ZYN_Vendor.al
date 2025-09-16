@@ -1,9 +1,5 @@
-
 namespace DefaultPublisher.vendor;
-
-
 using Microsoft.Purchases.Vendor;
-
 tableextension 50129 VendorListExt extends "Vendor"
 {
     fields

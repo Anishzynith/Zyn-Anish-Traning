@@ -1,5 +1,3 @@
-
-
 pageextension 50123 CustomerCardExt extends "Customer Card"
 {
     actions
@@ -13,7 +11,6 @@ pageextension 50123 CustomerCardExt extends "Customer Card"
                 Image = View;
                 RunObject = page "VisitorSource";
                 RunPageLink = "CustomerNo" = field("No.");
-                
             }
         }
     }

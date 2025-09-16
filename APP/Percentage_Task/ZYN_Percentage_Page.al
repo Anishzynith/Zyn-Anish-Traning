@@ -6,7 +6,6 @@ page 50110 Index_List
     SourceTable = Percentage_Table;
     Caption = 'Percentage Overview';
     CardPageId = "Index Card";
-
     layout
     {
         area(Content)
@@ -27,13 +26,8 @@ page 50110 Index_List
                 {
                     ApplicationArea = All;
                     Caption = 'Percentage Increase';
-
                 }
             }
-
         }
     }
-
-
-
 }

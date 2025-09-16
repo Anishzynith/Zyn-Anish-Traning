@@ -1,6 +1,5 @@
 codeunit 50128 MyScbscribers
 {
-
     [EventSubscriber(ObjectType::Codeunit, codeunit::"MyPublishers", 'OnAfterNewCustomerCreated', '', true, true)]
     procedure CheckCustomerNameOnAfterNewCustomerCreated(line: Text[50])
     begin

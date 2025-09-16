@@ -4,8 +4,7 @@ page 50115 SubPage
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = SubPageTable;
-    Editable=false;
-
+    Editable = false;
     layout
     {
         area(Content)
@@ -28,8 +27,6 @@ page 50115 SubPage
                 {
                     Caption = 'Value';
                 }
-
-
             }
         }
     }

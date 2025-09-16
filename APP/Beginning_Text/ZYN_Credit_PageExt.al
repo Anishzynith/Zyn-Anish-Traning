@@ -28,9 +28,5 @@ pageextension 50101 CreditMemoExtension extends "Sales Credit Memo"
                 SubPageLink = "Sell to Customer No." = field("Sell-to Customer No."), Selection = const(EndingText);
             }
         }
-
-
-
-
     }
 }

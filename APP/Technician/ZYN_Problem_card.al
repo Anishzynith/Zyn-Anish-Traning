@@ -25,7 +25,6 @@ page 50118 ProblemCard
                 {
                     Caption = 'Issue';
                     // Editable = true;
-
                 }
                 field(Issuse_Department; Rec.Issuse_Department)
                 {
@@ -34,7 +33,6 @@ page 50118 ProblemCard
                 }
                 field(Technician_Name; Rec.Technician_Name)
                 {
-
                     Caption = 'Technician Name';
                     // Editable = true;
                 }

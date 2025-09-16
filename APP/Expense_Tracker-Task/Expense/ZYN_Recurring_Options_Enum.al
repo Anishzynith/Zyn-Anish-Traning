@@ -1,7 +1,6 @@
 enum 50101 Recurring_Options_Enum
 {
     Extensible = true;
-
     value(0; Weekly)
     {
         Caption = 'Weekly';

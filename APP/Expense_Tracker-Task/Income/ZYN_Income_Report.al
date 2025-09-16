@@ -4,13 +4,11 @@ report 50105 "Income_Tracker_Report"
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
     ProcessingOnly = true;
-
     dataset
     {
         dataitem(Income_Tracker; Income_Tracker)
         {
             DataItemTableView = sorting(Income_ID);
-
             trigger OnAfterGetRecord()
             begin
                 if (Income_Tracker.IncomeDate >= StartDate) and (Income_Tracker.IncomeDate <= EndDate) then begin
@@ -20,7 +18,6 @@ report 50105 "Income_Tracker_Report"
                         ExcelBuffer.AddColumn(Income_Tracker.IncomeDate, FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Date);
                         ExcelBuffer.AddColumn(Income_Tracker.IncomeAmount, FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
                         ExcelBuffer.NewRow();
-
                         // Track total for selected category
                         TotalAmount += Income_Tracker.IncomeAmount;
                         RecordsFound := true;
@@ -72,7 +69,6 @@ report 50105 "Income_Tracker_Report"
         ExcelBuffer.DeleteAll();
         TotalAmount := 0;
         RecordsFound := false;
-
         // Header row
         ExcelBuffer.AddColumn('Income Category', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
         ExcelBuffer.AddColumn('Date', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Date);
@@ -94,11 +90,7 @@ report 50105 "Income_Tracker_Report"
             ExcelBuffer.AddColumn(TotalAmount, FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
             ExcelBuffer.NewRow();
         end;
-
-        FileName := 'Income_Report_' +
-                    (CategoryFilter <> '' ? CategoryFilter : 'All') + '_' +
-                    Format(Today, 0, '<Year4><Month,2><Day,2>') + '.xlsx';
-
+        FileName := 'Income_Report_' + (CategoryFilter <> '' ? CategoryFilter : 'All') + '_' + Format(Today, 0, '<Year4><Month,2><Day,2>') + '.xlsx';
         ExcelBuffer.CreateNewBook('Income Tracker Report');
         ExcelBuffer.WriteSheet('Incomes', CompanyName, UserId);
         ExcelBuffer.CloseBook();

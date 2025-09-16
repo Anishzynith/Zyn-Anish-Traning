@@ -29,11 +29,8 @@ pageextension 50105 "Contact List" extends "Contact List"
                             end;
                         until ContactBusRel.Next() = 0;
                     end;
-
                     Page.RunModal(Page::"Filtered Contact List", TempContact);
                 end;
-
-
             }
             action(vendorcontact)
             {
@@ -41,7 +38,6 @@ pageextension 50105 "Contact List" extends "Contact List"
                 Caption = 'Vendor Contact';
                 Image = ContactPerson;
                 trigger OnAction()
-
                 var
                     Contact: Record Contact;
                     TempContact: Record Contact temporary;
@@ -49,7 +45,6 @@ pageextension 50105 "Contact List" extends "Contact List"
                 begin
                     // Filter business relations for Vendor type
                     ContactBusRel.SetRange("Link to Table", ContactBusRel."Link to Table"::Vendor);
-
                     if ContactBusRel.FindSet() then begin
                         repeat
                             if Contact.Get(ContactBusRel."Contact No.") then begin
@@ -60,11 +55,8 @@ pageextension 50105 "Contact List" extends "Contact List"
                             end;
                         until ContactBusRel.Next() = 0;
                     end;
-
                     Page.RunModal(Page::"Filtered Contact List", TempContact);
                 end;
-
-
             }
             action(bankcontact)
             {
@@ -72,7 +64,6 @@ pageextension 50105 "Contact List" extends "Contact List"
                 Caption = 'Bank Contact';
                 Image = ContactPerson;
                 trigger OnAction()
-
                 var
                     Contact: Record Contact;
                     TempContact: Record Contact temporary;
@@ -80,7 +71,6 @@ pageextension 50105 "Contact List" extends "Contact List"
                 begin
                     // Filter business relations for Vendor type
                     ContactBusRel.SetRange("Link to Table", ContactBusRel."Link to Table"::"Bank Account");
-
                     if ContactBusRel.FindSet() then begin
                         repeat
                             if Contact.Get(ContactBusRel."Contact No.") then begin
@@ -91,13 +81,9 @@ pageextension 50105 "Contact List" extends "Contact List"
                             end;
                         until ContactBusRel.Next() = 0;
                     end;
-
                     Page.Run(Page::"Filtered Contact List", TempContact);
                 end;
-
             }
-
-
         }
     }
     local procedure Contactpage(ContactBusRel: Record "Contact Business Relation")
@@ -106,7 +92,6 @@ pageextension 50105 "Contact List" extends "Contact List"
         TempContact: Record Contact temporary;
     begin
         // Filter business relations for Vendor type
-
         if ContactBusRel.FindSet() then begin
             repeat
                 if Contact.Get(ContactBusRel."Contact No.") then begin
@@ -118,7 +103,6 @@ pageextension 50105 "Contact List" extends "Contact List"
                 end;
             until ContactBusRel.Next() = 0;
         end;
-
         Page.RunModal(Page::"Filtered Contact List", TempContact);
     end;
 

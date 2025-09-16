@@ -15,17 +15,14 @@ pageextension 50117 Problem_pageext extends "Customer Card"
                 var
                     cusRec: Record customer;
                     problemRec: Record ProblemTable;
-
                 begin
                     cusRec.get(Rec."No.");
                     problemRec.Init();
                     problemRec."CustomerID" := cusRec."No.";
                     problemRec."CustomerName" := cusRec.Name;
                     problemRec.Insert(true);
-
                     PAGE.Run(Page::ProblemCard, problemRec)
                 end;
-
             }
         }
     }

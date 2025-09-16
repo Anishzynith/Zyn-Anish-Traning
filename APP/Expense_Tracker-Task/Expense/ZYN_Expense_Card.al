@@ -4,7 +4,6 @@ page 50121 Expense_Tracker_Card
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = Expense_Tracker;
-
     layout
     {
         area(Content)
@@ -26,15 +25,12 @@ page 50121 Expense_Tracker_Card
                     ApplicationArea = All;
                     Caption = 'Amount';
                     Enabled = IsCategorySelected; // controlled by variable
-
-                    
                 }
                 field(Expense_Category; Rec.Expense_Category)
                 {
                     ApplicationArea = All;
                     Caption = 'Expense Category';
                     TableRelation = "Expense_Category_Table".ExpenseCategory_Name;
-
                     trigger OnValidate()
                     begin
                         IsCategorySelected := Rec.Expense_Category <> '';
@@ -53,8 +49,6 @@ page 50121 Expense_Tracker_Card
                     ApplicationArea = All;
                     Caption = 'Remaining Budget';
                     Editable = false; // User should not edit
-
-                   
                 }
             }
         }
@@ -65,14 +59,10 @@ page 50121 Expense_Tracker_Card
         RemainingBudget := RemainingBudgetMgt.GetRemainingBudget(Rec.Expense_Category);
     end;
 
-   
-
     var
-
         IsCategorySelected: Boolean;
         RemainingBudgetMgt: Codeunit "Remaining Budget";
         RemainingBudget: Decimal;
-
         Expense: Record Expense_Tracker;
 
     local procedure GetCYRange(var StartD: Date; var EndD: Date)
@@ -86,6 +76,4 @@ page 50121 Expense_Tracker_Card
         StartD := DMY2Date(1, Date2DMY(Today, 2), Date2DMY(Today, 3)); // 1st day of current month
         EndD := CALCDATE('<CM>', StartD); // last day of current month
     end;
-
-
 }

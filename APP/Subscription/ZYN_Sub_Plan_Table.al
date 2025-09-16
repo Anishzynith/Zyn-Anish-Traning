@@ -1,13 +1,11 @@
 table 50133 Sub_Plan_Table
 {
     DataClassification = ToBeClassified;
-
     fields
     {
         field(1; Plan_ID; Integer)
         {
             DataClassification = ToBeClassified;
-
         }
         field(2; Plan_Fees; Decimal)
         {
@@ -26,7 +24,6 @@ table 50133 Sub_Plan_Table
             DataClassification = ToBeClassified;
         }
     }
-
     keys
     {
         key(Key1; Plan_ID)
@@ -34,33 +31,4 @@ table 50133 Sub_Plan_Table
             Clustered = true;
         }
     }
-
-    fieldgroups
-    {
-        // Add changes to field groups here
-    }
-
-    var
-        myInt: Integer;
-
-    trigger OnInsert()
-    begin
-
-    end;
-
-    trigger OnModify()
-    begin
-
-    end;
-
-    trigger OnDelete()
-    begin
-
-    end;
-
-    trigger OnRename()
-    begin
-
-    end;
-
 }

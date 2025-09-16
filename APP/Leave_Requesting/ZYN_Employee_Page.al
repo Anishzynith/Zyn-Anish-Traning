@@ -5,7 +5,6 @@ page 50167 Employee_Page
     UsageCategory = Lists;
     SourceTable = Employee_Table;
     CardPageId = Employee_Card;
-
     layout
     {
         area(Content)
@@ -15,7 +14,6 @@ page 50167 Employee_Page
                 field(Employee_ID; Rec.Employee_ID)
                 {
                     ApplicationArea = All;
-
                 }
                 field(Employee_Name; Rec.Employee_Name)
                 {
@@ -29,7 +27,6 @@ page 50167 Employee_Page
                 {
                     ApplicationArea = all;
                 }
-
             }
         }
         area(factboxes)
@@ -38,21 +35,6 @@ page 50167 Employee_Page
             {
                 SubPageLink = Employee_ID = FIELD(Employee_ID);
                 ApplicationArea = All;
-            }
-        }
-    }
-
-    actions
-    {
-        area(Processing)
-        {
-            action(ActionName)
-            {
-
-                trigger OnAction()
-                begin
-
-                end;
             }
         }
     }

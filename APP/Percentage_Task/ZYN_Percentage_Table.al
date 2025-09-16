@@ -2,10 +2,8 @@ table 50108 Percentage_Table
 {
     Caption = 'Percentage_Table';
     DataClassification = ToBeClassified;
-
     fields
     {
-
         field(1; "Code"; Code[20])
         {
             Caption = 'Code';
@@ -35,9 +33,7 @@ table 50108 Percentage_Table
             DataClassification = ToBeClassified;
             //   TableRelation = Percentage_Table.EndYear;
         }
-
     }
-
     keys
     {
         key(PK; "Code")

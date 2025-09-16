@@ -1,7 +1,6 @@
 enum 50115 Issue
 {
     Extensible = true;
-
     value(0; Vehicle)
     {
         Caption = 'Vehicle';

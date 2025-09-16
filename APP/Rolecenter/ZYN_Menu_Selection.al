@@ -3,7 +3,6 @@ page 50170 ANISH_RoleCenter
     PageType = RoleCenter;
     ApplicationArea = all;
     Caption = 'ANISH Role Center';
-
     layout
     {
         area(RoleCenter)
@@ -19,10 +18,8 @@ page 50170 ANISH_RoleCenter
             // }
         }
     }
-
     actions
     {
-
         area(Sections)
         {
             group(Asset)
@@ -40,7 +37,6 @@ page 50170 ANISH_RoleCenter
                 {
                     RunObject = page Employee_Asset_Page;
                 }
-
             }
             group(Leave_Request)
             {
@@ -112,8 +108,6 @@ page 50170 ANISH_RoleCenter
                     RunObject = page TechnicianList;
                 }
             }
-
         }
-
     }
 }

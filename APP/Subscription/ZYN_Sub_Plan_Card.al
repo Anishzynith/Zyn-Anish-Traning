@@ -4,7 +4,6 @@ page 50172 Sub_Plan_Card
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = Sub_Plan_Table;
-
     layout
     {
         area(Content)
@@ -12,9 +11,7 @@ page 50172 Sub_Plan_Card
             group(GroupName)
             {
                 field(Plan_ID; Rec.Plan_ID)
-                {
-
-                }
+                { }
                 field(Plan_Fees; Rec.Plan_Fees)
                 { }
                 field(Plan_Name; Rec.Plan_Name)
@@ -23,26 +20,7 @@ page 50172 Sub_Plan_Card
                 { }
                 field(Description; Rec.Description)
                 { }
-
             }
         }
     }
-
-    actions
-    {
-        area(Processing)
-        {
-            action(ActionName)
-            {
-
-                trigger OnAction()
-                begin
-
-                end;
-            }
-        }
-    }
-
-    var
-        myInt: Integer;
 }

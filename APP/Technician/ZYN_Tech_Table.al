@@ -8,7 +8,6 @@ table 50111 TechnicianTable
         {
             Caption = 'Tech_ID';
             DataClassification = ToBeClassified;
-
         }
         field(2; "Tech_Name"; text[50])
         {
@@ -19,13 +18,11 @@ table 50111 TechnicianTable
         {
             Caption = 'Phone_No';
             DataClassification = ToBeClassified;
-
         }
         field(50113; "Department"; Enum Department)
         {
             Caption = 'Department';
             DataClassification = ToBeClassified;
-
         }
         field(4; "No Of Problems"; Integer)
         {
@@ -34,15 +31,11 @@ table 50111 TechnicianTable
             CalcFormula = count(ProblemTable where(Technician_Name = field(Tech_Name)));
         }
     }
-
-
     keys
     {
-
         key(PK; "Tech_ID", Tech_Name)
         {
             Clustered = true;
         }
     }
-
 }

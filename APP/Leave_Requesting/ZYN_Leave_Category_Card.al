@@ -4,7 +4,6 @@ page 50150 Leave_Category_Card
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = Leave_Category_Table;
-    
     layout
     {
         area(Content)
@@ -26,22 +25,4 @@ page 50150 Leave_Category_Card
             }
         }
     }
-    
-    actions
-    {
-        area(Processing)
-        {
-            action(ActionName)
-            {
-                
-                trigger OnAction()
-                begin
-                    
-                end;
-            }
-        }
-    }
-    
-    var
-        myInt: Integer;
 }

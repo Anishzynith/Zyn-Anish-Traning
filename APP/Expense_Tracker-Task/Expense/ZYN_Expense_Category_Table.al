@@ -1,7 +1,6 @@
 table 50116 Expense_Category_Table
 {
     DataClassification = ToBeClassified;
-
     fields
     {
         field(1; ExpenseCategory_ID; Integer)
@@ -23,9 +22,7 @@ table 50116 Expense_Category_Table
             DataClassification = ToBeClassified;
             Caption = 'Budget Amount';
         }
-        
     }
-
     keys
     {
         key(PK; ExpenseCategory_Name)
@@ -37,5 +34,4 @@ table 50116 Expense_Category_Table
     {
         fieldgroup(DropDown; ExpenseCategory_Name) { }
     }
-
 }

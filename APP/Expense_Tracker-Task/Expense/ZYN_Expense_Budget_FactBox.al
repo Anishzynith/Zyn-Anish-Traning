@@ -4,7 +4,6 @@ page 50141 "Expense Budget FactBox"
     SourceTable = ExpenseBudget_Table;
     ApplicationArea = All;
     Caption = 'Expense Budget (This Month)';
-
     layout
     {
         area(content)
@@ -34,7 +33,6 @@ page 50141 "Expense Budget FactBox"
             }
         }
     }
-
     trigger OnOpenPage()
     var
         FromDate: Date;
@@ -43,7 +41,6 @@ page 50141 "Expense Budget FactBox"
         // filter automatically to current month
         FromDate := CalcDate('<-CM>', WorkDate()); // first day of month
         ToDate := CalcDate('<CM>', WorkDate());    // last day of month
-
         Rec.SetRange(From_Date, FromDate, ToDate);
         Rec.SetRange(To_Date, ToDate);
     end;

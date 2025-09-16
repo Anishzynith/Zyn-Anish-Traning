@@ -4,7 +4,6 @@ page 50120 Expense_Category_Page
     //  ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = Expense_Category_Table;
-
     layout
     {
         area(Content)
@@ -27,9 +26,6 @@ page 50120 Expense_Category_Page
                     Caption = 'Description';
                 }
             }
-
         }
-        
     }
-
 }

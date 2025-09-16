@@ -17,16 +17,13 @@ page 50142 SalesOrders
                 {
                     DrillDown = true;
                     ApplicationArea = all;
-
                     trigger OnDrillDown()
                     var
                         Sales: Page "Sales Order";
                     begin
                         Sales.SetRecord(Rec);
                         sales.Run();
-
                     end;
-
                 }
                 field("Sell-to Customer Name"; Rec."Sell-to Customer Name")
                 {

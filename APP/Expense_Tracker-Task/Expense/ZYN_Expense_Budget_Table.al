@@ -1,18 +1,15 @@
 table 50123 ExpenseBudget_Table
 {
     DataClassification = ToBeClassified;
-
     fields
     {
         field(1; From_Date; Date)
         {
             DataClassification = ToBeClassified;
-
         }
         field(2; To_Date; Date)
         {
             DataClassification = ToBeClassified;
-
         }
         field(3; Expense_Category; Code[100])
         {
@@ -26,7 +23,6 @@ table 50123 ExpenseBudget_Table
             Caption = 'Budget Amount';
         }
     }
-
     keys
     {
         key(Key1; From_Date, To_Date, Expense_Category)
@@ -34,12 +30,6 @@ table 50123 ExpenseBudget_Table
             Clustered = true;
         }
     }
-
-    fieldgroups
-    {
-        // Add changes to field groups here
-    }
-
     trigger OnInsert()
     begin
         if From_Date = 0D then
@@ -48,5 +38,4 @@ table 50123 ExpenseBudget_Table
         if To_Date = 0D then
             To_Date := CalcDate('<CM>', WorkDate());    // last day of current month
     end;
-
 }

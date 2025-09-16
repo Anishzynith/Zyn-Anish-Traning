@@ -5,7 +5,6 @@ page 50166 Asset_History_FactBox
     SourceTable = Employee_Table;
     ApplicationArea = All;
     Caption = 'Asset Summary';
-
     layout
     {
         area(Content)
@@ -16,12 +15,10 @@ page 50166 Asset_History_FactBox
                 {
                     ApplicationArea = All;
                 }
-
                 field("Returned Assets"; GetReturnedCount())
                 {
                     ApplicationArea = All;
                 }
-
                 field("Lost Assets"; GetLostCount())
                 {
                     ApplicationArea = All;
@@ -29,7 +26,6 @@ page 50166 Asset_History_FactBox
             }
         }
     }
-
     local procedure GetAssignedCount(): Integer
     var
         AssetRec: Record Employee_Table;
@@ -60,5 +56,4 @@ page 50166 Asset_History_FactBox
         AssetRecCom.SetFilter(Is_Lost, '=true');
         exit(AssetRec.Count);
     end;
-
 }

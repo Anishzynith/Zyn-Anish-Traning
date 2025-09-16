@@ -4,7 +4,6 @@ page 50137 "Buffer Table List"  //temporary buffer in FieldName and RecordSelect
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = "Buffer Field";
-
     layout
     {
         area(Content)
@@ -16,7 +15,6 @@ page 50137 "Buffer Table List"  //temporary buffer in FieldName and RecordSelect
                     ApplicationArea = All;
                 }
                 field("Field Name"; Rec."Field Name")
-
                 {
                     ApplicationArea = All;
                 }
@@ -24,7 +22,6 @@ page 50137 "Buffer Table List"  //temporary buffer in FieldName and RecordSelect
                 {
                     ApplicationArea = All;
                 }
-
             }
         }
     }

@@ -4,7 +4,6 @@ page 50175 Customer_Page_Fact
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = Subscriber_Table;
-
     layout
     {
         area(Content)
@@ -16,7 +15,6 @@ page 50175 Customer_Page_Fact
                     ApplicationArea = All;
                     Caption = 'Active Subscriptions';
                     DrillDownPageId = Subscriber_Page; // custom page (see below)
-
                     trigger OnDrillDown()
                     var
                         SubRec: Record Subscriber_Table;
@@ -25,14 +23,11 @@ page 50175 Customer_Page_Fact
                         PAGE.Run(PAGE::Subscriber_Page, SubRec);
                     end;
                 }
-
-
                 field(TotalRevenue; RevenueGenerated())
                 {
                     ApplicationArea = All;
                     Caption = 'Revenue Generated';
                     DrillDownPageId = "Sales Invoice List";
-
                     trigger OnDrillDown()
                     var
                         SalesHeader: Record "Sales Header";
@@ -44,31 +39,23 @@ page 50175 Customer_Page_Fact
                         // Get current month and year
                         CurrentMonth := Date2DMY(WorkDate(), 2); // Month
                         CurrentYear := Date2DMY(WorkDate(), 3);  // Year
-
                         // First day of month
                         FromDate := DMY2Date(1, CurrentMonth, CurrentYear);
-
                         // Last day of month using CalcDate
                         ToDate := CalcDate('<+1M>-1D', FromDate);
-
                         // Filter SalesHeader for SUBINV invoices in current month
                         SalesHeader.SetFilter("No.", '*SUBINV*');
                         SalesHeader.SetRange("Document Date", FromDate, ToDate);
-
                         // Open Sales Invoice List page with filter applied
                         PAGE.Run(PAGE::"Sales Invoice List", SalesHeader);
                     end;
                 }
-
-
             }
         }
     }
-
     var
         sales: Record "Sales Header";
         salesline: record "sales line";
-
         WorkMonth: Integer;
         WorkYear: Integer;
 
@@ -80,10 +67,7 @@ page 50175 Customer_Page_Fact
         MyNotify.ShowLeaveBalanceNotification();
         Renew_Reminder.Run();
         CurrPage.Update(false);
-
     end;
-
-
 
     local procedure GetActiveCount(): Integer
     var
@@ -105,26 +89,19 @@ page 50175 Customer_Page_Fact
         // Get current month and year
         WorkMonth := Date2DMY(WorkDate(), 2); // Month
         WorkYear := Date2DMY(WorkDate(), 3);  // Year
-
         // First day of month
         FromDate := DMY2Date(1, WorkMonth, WorkYear);
-
         // Last day of month
         ToDate := CalcDate('<+1M>-1D', FromDate);
-
         // Filter for SUBINV invoices in this month
         SalesHeader.SetFilter("No.", '*SUBINV*');
         SalesHeader.SetRange("Document Date", FromDate, ToDate);
-
         // Sum amounts
         if SalesHeader.FindSet() then
             repeat
                 SalesHeader.CalcFields("Amount Including VAT");
                 totAmount += SalesHeader."Amount Including VAT";
             until SalesHeader.Next() = 0;
-
         exit(totAmount);
     end;
-
-
 }

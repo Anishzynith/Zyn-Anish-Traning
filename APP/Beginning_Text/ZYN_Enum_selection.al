@@ -1,7 +1,6 @@
 enum 50100 BeginEnd_Enum
 {
     Extensible = true;
-
     value(0; BeginningText)
     {
         Caption = 'Beginning Text';

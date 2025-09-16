@@ -4,7 +4,6 @@ page 50131 Income_Tracker_Card
     //  ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = Income_Tracker;
-
     layout
     {
         area(Content)
@@ -40,5 +39,4 @@ page 50131 Income_Tracker_Card
             }
         }
     }
-
 }

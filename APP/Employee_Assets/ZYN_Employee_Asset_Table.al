@@ -6,14 +6,11 @@ tableextension 50107 Employee_Asset_Table extends Employee_Table
         {
             DataClassification = ToBeClassified;
             TableRelation = Employee_Table.Employee_ID;
-
-
         }
         field(5; Serial_NO; Code[20])
         {
             //  TableRelation = Company_Asset_Table.Serial_NO;
             DataClassification = ToBeClassified;
-
         }
         field(6; Asset_Status; Enum Asset_Status_Enum)
         {
@@ -36,11 +33,9 @@ tableextension 50107 Employee_Asset_Table extends Employee_Table
             DataClassification = ToBeClassified;
             TableRelation = Company_Asset_Table.Asset_Type;
         }
-
         field(13; Asset_ID; Code[20])
         {
             DataClassification = SystemMetadata;
-
             trigger OnValidate()
             var
                 AssetRec: Record Company_Asset_Table;
@@ -51,19 +46,11 @@ tableextension 50107 Employee_Asset_Table extends Employee_Table
                 end;
             end;
         }
-
     }
-
-
-
     keys
     {
         // Add changes to keys here
         key(PK3; Asset_Status, Serial_NO, Asset_Type, Asset_ID)
-        {
-
-        }
+        { }
     }
-
-  
 }

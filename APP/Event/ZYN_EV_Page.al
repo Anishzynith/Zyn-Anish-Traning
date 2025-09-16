@@ -1,7 +1,5 @@
 pageextension 50135 MyCustomerext extends "Customer Card"
 {
-  
-
     var
         IsNewCustomer: Boolean;
 
@@ -17,11 +15,10 @@ pageextension 50135 MyCustomerext extends "Customer Card"
             Message('Please enter a customer name before closing the page.');
             exit(false); // prevent closing
         end;
-
         exit(true); // allow closing
     end;
 
-      trigger OnClosePage()
+    trigger OnClosePage()
     var
         Publisher: Codeunit MyPublishers;
     begin
@@ -31,4 +28,3 @@ pageextension 50135 MyCustomerext extends "Customer Card"
 }
 
 
- 

@@ -1,7 +1,6 @@
 table 50134 Subscriber_Table
 {
     DataClassification = ToBeClassified;
-
     fields
     {
         field(1; ID; Integer)
@@ -58,36 +57,29 @@ table 50134 Subscriber_Table
         field(10; Next_Renewal_Date; Date)
         {
             DataClassification = ToBeClassified;
-
         }
         field(11; Reminder_Sent; Boolean)
         {
             DataClassification = ToBeClassified;
         }
-
     }
-
     keys
     {
         key(Key1; Customer_No, Plan_ID, ID) { Clustered = true; }
     }
-
     local procedure UpdateNextBillDate()
     begin
         case Subscriber_Status of
             Subscriber_Status::Active:
                 if Start_Date <> 0D then
                     Next_Bill_Date := CalcDate('<1M>', Start_Date);
-
             Subscriber_Status::Inactive:
                 if End_Date <> 0D then
                     Next_Bill_Date := End_Date
                 else
                     Next_Bill_Date := 0D; // no end date means no next bill
-
             Subscriber_Status::Expired:
                 Next_Bill_Date := 0D;
         end;
     end;
-
 }

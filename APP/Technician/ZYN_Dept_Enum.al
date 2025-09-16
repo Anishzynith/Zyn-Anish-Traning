@@ -1,7 +1,6 @@
 enum 50113 Department
 {
     Extensible = true;
-
     value(0; IT)
     {
         Caption = 'IT';

@@ -8,10 +8,7 @@ pageextension 50139 "My RoleCenter Ext" extends "Business Manager Role Center"
             {
                 ApplicationArea = All;
             }
-
-
         }
-
     }
     // Removed OnOpenPage trigger as triggers are not allowed on Role Center pages.
 }

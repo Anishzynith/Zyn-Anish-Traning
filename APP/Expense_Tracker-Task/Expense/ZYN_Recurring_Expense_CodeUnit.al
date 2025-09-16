@@ -1,7 +1,6 @@
   codeunit 50112 "Process Recurring Expenses"
 {
     Subtype = Normal;
- 
     trigger OnRun()
     var
         RecurringExpense: Record Recurring_Expense_Table;
@@ -15,7 +14,6 @@
     begin
         RecurringExpense.Reset();
         RecurringExpense.SetRange(Next_Cycle_Date, WorkDate());
- 
         if RecurringExpense.FindSet() then
             repeat
                 CreateExpense(RecurringExpense);
@@ -50,8 +48,7 @@
                 RecurringExpense.Next_Cycle_Date := CalcDate('<+1Y>', RecurringExpense.Next_Cycle_Date);
         end;
         RecurringExpense.Modify(true);
-    end;
-    
+    end;  
 }
  
  

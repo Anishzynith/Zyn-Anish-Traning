@@ -1,6 +1,5 @@
 pageextension 50126 SalesInvoiceListExt extends "Sales Invoice List"
 {
-
     actions
     {
         addlast(processing)
@@ -21,6 +20,4 @@ pageextension 50126 SalesInvoiceListExt extends "Sales Invoice List"
         }
         // Add changes to page actions here
     }
-
-
 }

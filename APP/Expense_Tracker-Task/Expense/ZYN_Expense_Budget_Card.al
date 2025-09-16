@@ -4,7 +4,6 @@ page 50139 ExpenseBudget_Card
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = ExpenseBudget_Table;
-
     layout
     {
         area(Content)
@@ -37,22 +36,4 @@ page 50139 ExpenseBudget_Card
             }
         }
     }
-
-    actions
-    {
-        area(Processing)
-        {
-            action(ActionName)
-            {
-
-                trigger OnAction()
-                begin
-
-                end;
-            }
-        }
-    }
-
-    var
-        myInt: Integer;
 }

@@ -5,7 +5,6 @@ page 50136 Income_Tracker_Page
     UsageCategory = Lists;
     SourceTable = Income_Tracker;
     CardPageId = Income_Tracker_Card;
-
     layout
     {
         area(Content)
@@ -22,12 +21,6 @@ page 50136 Income_Tracker_Page
                     ApplicationArea = All;
                     Caption = 'Amount';
                 }
-                // field("Income_Category_ID"; Rec."Income_Category_ID")
-                // {
-                //     ApplicationArea = All;
-                //     Caption = 'Income Category';
-                //     TableRelation = "Income_Category_Table".Category_ID;
-                // }
                 field(Income_Category; Rec.Income_Category)
                 {
                     ApplicationArea = All;
@@ -40,12 +33,8 @@ page 50136 Income_Tracker_Page
                     Caption = 'Date';
                 }
             }
-
         }
-
-
     }
-
     actions
     {
         area(Processing)
@@ -65,10 +54,6 @@ page 50136 Income_Tracker_Page
                 ApplicationArea = All;
                 Caption = 'Export to Excel';
                 Image = ExportToExcel;
-                // trigger OnAction()
-                // begin
-                //  //   Report.RunModal(Report::"Income_Tracker_Report", false, false, Rec);
-                // end;
                 RunObject = Report "Income_Tracker_Report";
             }
         }

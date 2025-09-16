@@ -1,7 +1,6 @@
 table 50128 Leave_Request_Table
 {
     DataClassification = ToBeClassified;
-
     fields
     {
         field(1; Leave_ID; Integer)
@@ -9,13 +8,11 @@ table 50128 Leave_Request_Table
             DataClassification = ToBeClassified;
             InitValue = 0;
             AutoIncrement = true;
-
         }
         field(2; Employee_ID; Code[20])
         {
             DataClassification = ToBeClassified;
             TableRelation = Employee_Table.Employee_ID;
-
         }
         field(3; Leave_Category_Name; Text[50])
         {
@@ -66,14 +63,12 @@ table 50128 Leave_Request_Table
         field(8; Remaining_Leave_Balance; Integer)
         {
             DataClassification = ToBeClassified;
-
         }
         field(9; Leave_Days; Integer)
         {
             DataClassification = ToBeClassified;
         }
     }
-
     keys
     {
         key(PK; Leave_ID, Employee_ID, Start_Date)
@@ -81,15 +76,6 @@ table 50128 Leave_Request_Table
             Clustered = true;
         }
     }
-
-    fieldgroups
-    {
-        // Add changes to field groups here
-    }
-
-
-
-
     local procedure CalcLeaveDays()
     begin
         if (Rec.Start_Date <> 0D) and (Rec.End_Date <> 0D) then begin
@@ -109,17 +95,14 @@ table 50128 Leave_Request_Table
         // Get category balance
         if LeaveCategory.Get(Leave_Category_Name) then begin
             UsedDays := 0;
-
             LeaveRequests.Reset();
             LeaveRequests.SetRange(Employee_ID, Employee_ID);
             LeaveRequests.SetRange(Leave_Category_Name, Leave_Category_Name);
             LeaveRequests.SetRange(Approval_Status, LeaveRequests.Approval_Status::Approved);
-
             if LeaveRequests.FindSet() then
                 repeat
                     UsedDays += (LeaveRequests.End_Date - LeaveRequests.Start_Date + 1);
                 until LeaveRequests.Next() = 0;
-
             Remaining_Leave_Balance := LeaveCategory.Number_of_Days - UsedDays;
         end else
             Remaining_Leave_Balance := 0;
@@ -131,12 +114,7 @@ table 50128 Leave_Request_Table
             Error('You can only delete Leave Requests that are in Pending status.');
     end;
 
-
     var
         myInt: Integer;
         Leave_Days: Integer;
-
-
-
-
 }

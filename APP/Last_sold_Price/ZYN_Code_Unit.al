@@ -20,16 +20,12 @@ codeunit 50109 "Last Sold Price Updater"
         // Only store for Items
         if SalesInvLine.Type <> SalesInvLine.Type::Item then
             exit;
-
-
-
         // Look for existing record
         LastSoldRec.Reset();
         LastSoldRec.SetCurrentKey("Customer No", "Item No", "Posting Date");
         LastSoldRec.SetRange("Customer No", SalesInvLine."Sell-to Customer No.");
         LastSoldRec.SetRange("Item No", SalesInvLine."No.");
         //      LastSoldRec.SetRange("Sell-to Customer Name", SalesInvLine."Sell-to Customer Name");
-
         if LastSoldRec.FindLast() then begin
             // Update existing record
             LastSoldRec.Validate("LastItem Sold Price", SalesInvLine."Unit Price");
@@ -47,14 +43,9 @@ codeunit 50109 "Last Sold Price Updater"
         end;
     end;
 }
-
-
 codeunit 50110 "Last Sold Price Upgrade"
 {
-
     Subtype = Upgrade;
-
-
     trigger OnUpgradePerCompany()
     var
         SalesInvLine: Record "Sales Invoice Line";
@@ -64,7 +55,6 @@ codeunit 50110 "Last Sold Price Upgrade"
         // Step 1: Collect last sold price per Customer–Item from history
         SalesInvLine.Reset();
         SalesInvLine.SetCurrentKey("Sell-to Customer No.", "No.", "Posting Date");
-
         if SalesInvLine.FindSet() then
             repeat
                 if SalesInvLine.Type = SalesInvLine.Type::Item then begin
@@ -85,7 +75,6 @@ codeunit 50110 "Last Sold Price Upgrade"
                     end;
                 end;
             until SalesInvLine.Next() = 0;
-
         // Step 2: Save data to actual table
         if TempLastSold.FindSet() then
             repeat

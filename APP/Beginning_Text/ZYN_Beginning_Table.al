@@ -2,7 +2,6 @@ table 50110 "Sales Invoice Text Code"
 
 {
     DataClassification = ToBeClassified;
-
     fields
     {
         field(1; lineNO; Integer)
@@ -15,22 +14,17 @@ table 50110 "Sales Invoice Text Code"
             DataClassification = ToBeClassified;
 
         }
-
         field(3; "Sell to Customer No."; Code[20])
         {
             DataClassification = ToBeClassified;
-
         }
         field(4; "Document Type"; Enum "Sales Document Type")
         {
             DataClassification = ToBeClassified;
-
         }
-
         field(5; "Language Code"; Code[20])
         {
             DataClassification = ToBeClassified;
-
         }
         field(6; Text; Text[100])
         {
@@ -39,13 +33,8 @@ table 50110 "Sales Invoice Text Code"
         field(7; Selection; Enum "BeginEnd_Enum")
         {
             DataClassification = ToBeClassified;
-
         }
-
     }
-
-
-
     keys
     {
         key(PK; lineNO, "No.", Selection, "Language Code", "Document Type")

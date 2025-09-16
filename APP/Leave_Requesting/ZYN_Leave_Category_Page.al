@@ -5,7 +5,6 @@ page 50151 Leave_Category_Page
     UsageCategory = Lists;
     SourceTable = Leave_Category_Table;
     CardPageId = Leave_Category_Card;
-
     layout
     {
         area(Content)
@@ -24,25 +23,6 @@ page 50151 Leave_Category_Page
                 {
                     ApplicationArea = All;
                 }
-            }
-        }
-        area(Factboxes)
-        {
-
-        }
-    }
-
-    actions
-    {
-        area(Processing)
-        {
-            action(ActionName)
-            {
-
-                trigger OnAction()
-                begin
-
-                end;
             }
         }
     }

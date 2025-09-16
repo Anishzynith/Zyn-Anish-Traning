@@ -14,27 +14,22 @@ codeunit 50101 "Post Sales Invoice"
         ExtendedTextTable.SetRange(Selection, ExtendedTextTable.Selection::BeginningText);
         if ExtendedTextTable.FindSet() then begin
             repeat
-                
                 PostedExtendedTextTable.SetRange("No.", SalesInvHeader."No.");
                 PostedExtendedTextTable.SetRange(Selection, ExtendedTextTable.Selection);
                 PostedExtendedTextTable.SetRange("Language Code", ExtendedTextTable."Language Code");
                 PostedExtendedTextTable.SetRange("Document Type", PostedExtendedTextTable."Document Type"::"Posted Invoice");
-
                 if PostedExtendedTextTable.FindLast() then
                     PostedExtendedTextTable.lineNO := PostedExtendedTextTable.lineNO + 1
                 else
                     PostedExtendedTextTable.lineNO := 1;
-
                 PostedExtendedTextTable.Init();
                 PostedExtendedTextTable."No." := SalesInvHeader."No.";
                 PostedExtendedTextTable."Language Code" := ExtendedTextTable."Language Code";
                 PostedExtendedTextTable.Selection := ExtendedTextTable.Selection;
                 PostedExtendedTextTable."Document Type" := PostedExtendedTextTable."Document Type"::"Posted Invoice";
                 PostedExtendedTextTable."Text" := ExtendedTextTable."Text";
-
                 // Insert record
                 PostedExtendedTextTable.Insert();
-
             until ExtendedTextTable.Next() = 0;
         end;
         ExtendedTextTable.SetRange("No.", SalesHeader."No.");
@@ -63,36 +58,22 @@ codeunit 50101 "Post Sales Invoice"
         if ExtendedTextTable.FindSet() then begin
             repeat
                 PostedExtendedTextTable.Init();
-                /*     PostedExtendedTextTable."No." := SalesInvHeader."No.";
-                     PostedExtendedTextTable."Language Code" := ExtendedTextTable."Language Code";
-                     PostedExtendedTextTable.Selection := PostedExtendedTextTable.Selection::EndingText;
-                     //   PostedExtendedTextTable."Sell to Customer Name" := ExtendedTextTable."Sell to Customer Name";
-                     //   PostedExtendedTextTable."Line No." := ExtendedTextTable."Line No.";
-                     PostedExtendedTextTable."Document Type" := ExtendedTextTable."Document Type"::"Posted Invoice";
-                     PostedExtendedTextTable."Text" := ExtendedTextTable."Text";
-                     PostedExtendedTextTable.Text := ExtendedTextTable.Text;
-                     PostedExtendedTextTable.insert();
-                     */
                 PostedExtendedTextTable.SetRange("No.", SalesInvHeader."No.");
                 PostedExtendedTextTable.SetRange(Selection, ExtendedTextTable.Selection);
                 PostedExtendedTextTable.SetRange("Language Code", ExtendedTextTable."Language Code");
                 PostedExtendedTextTable.SetRange("Document Type", PostedExtendedTextTable."Document Type"::"Posted Invoice");
-
                 if PostedExtendedTextTable.FindLast() then
                     PostedExtendedTextTable.lineNO := PostedExtendedTextTable.lineNO + 1
                 else
                     PostedExtendedTextTable.lineNO := 1;
-
                 PostedExtendedTextTable.Init();
                 PostedExtendedTextTable."No." := SalesInvHeader."No.";
                 PostedExtendedTextTable."Language Code" := ExtendedTextTable."Language Code";
                 PostedExtendedTextTable.Selection := ExtendedTextTable.Selection;
                 PostedExtendedTextTable."Document Type" := PostedExtendedTextTable."Document Type"::"Posted Invoice";
                 PostedExtendedTextTable."Text" := ExtendedTextTable."Text";
-
                 // Insert record
                 PostedExtendedTextTable.Insert();
-
             until ExtendedTextTable.Next() = 0;
         end;
         ExtendedTextTable.SetRange("No.", SalesHeader."No.");

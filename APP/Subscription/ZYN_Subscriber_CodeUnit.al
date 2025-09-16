@@ -1,7 +1,6 @@
 codeunit 50119 "Subscriber Invoice Generator"
 {
     Subtype = Normal;
-
     trigger OnRun()
     var
         Subscriber: Record Subscriber_Table;
@@ -15,14 +14,10 @@ codeunit 50119 "Subscriber Invoice Generator"
             repeat
                 // Create sales header
                 CreateSalesInvoice(Subscriber);
-
                 // Update Next_Bill_Date based on plan/frequency
                 UpdateNextBillDate(Subscriber);
-
             until Subscriber.Next() = 0;
     end;
-
-
 
     procedure CreateSalesInvoice(Subscription: Record Subscriber_Table)
     var
@@ -32,31 +27,22 @@ codeunit 50119 "Subscriber Invoice Generator"
         PlanRec: Record "Sub_Plan_Table";
         invoiceno: code[25];
         SubscriberNo: Integer;
-
     begin
-
         invoiceno := 'SUBINV-' + Format(Subscription.Plan_ID) + '-' + Format(WorkDate(), 0, '<Year4><Month,2>');
-
         SalesHeader.Init();
-
         SalesHeader."Document Type" := SalesHeader."Document Type"::Invoice;
         SalesHeader.Validate("Sell-to Customer No.", Subscription.Customer_No);
         SalesHeader."No." := invoiceno;
-
         SalesHeader.Insert();
-
-
         // Add subscriber plan line
         SalesLine.Init();
         SalesLine."Document Type" := SalesLine."Document Type"::Invoice;
         SalesLine."Document No." := SalesHeader."No.";
-
         if PlanRec.Get(Subscription.Plan_ID) then begin
             SalesLine.Description := PlanRec.Plan_Name;
             SalesLine.Validate(Amount, PlanRec.Plan_Fees);
         end else
             Error('Plan %1 not found', Subscription.Plan_ID);
-
         SalesLine.Insert();
     end;
 
@@ -71,7 +57,6 @@ codeunit 50119 "Subscriber Invoice Generator"
             Subscriber.Next_Bill_Date := 0D; // or leave blank if subscription ended
             Subscriber."Next_Renewal_Date" := 0D;
         end;
-
         Subscriber.Modify();
     end;
 
@@ -83,15 +68,11 @@ codeunit 50119 "Subscriber Invoice Generator"
         SalesLine.Init();
         SalesLine."Document Type" := SalesLine."Document Type"::Invoice;
         SalesLine."Document No." := SalesHeader."No.";
-
         if PlanRec.Get(Subscriber.Plan_ID) then begin
             SalesLine.Description := PlanRec.Plan_Name;
             SalesLine.Validate("Unit Price", PlanRec.Plan_Fees);
         end else
             Error('Plan %1 not found', Subscriber.Plan_ID);
-
         SalesLine.Insert(true);
     end;
-
-
 }

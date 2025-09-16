@@ -5,7 +5,6 @@ page 50157 Company_Asset_Page
     UsageCategory = Lists;
     SourceTable = Company_Asset_Table;
     CardPageId = Company_Asset_Card;
-
     layout
     {
         area(Content)
@@ -15,32 +14,26 @@ page 50157 Company_Asset_Page
                 field(Asset_Type; Rec.Asset_Type)
                 {
                     ApplicationArea = All;
-
                 }
                 field(Serial_NO; Rec.Serial_NO)
                 {
                     ApplicationArea = All;
-
                 }
                 field(Procured_Date; Rec.Procured_Date)
                 {
                     ApplicationArea = All;
-
                 }
                 field(Vendor_Name; Rec.Vendor_Name)
                 {
                     ApplicationArea = All;
-
                 }
                 field(Available_Asset; Rec.Available_Asset)
                 {
                     ApplicationArea = All;
                     Editable = IsAvailableEditable;
-
                 }
             }
         }
-
         area(Factboxes)
         {
             part(AssetSummaryFactBox; Company_Asset_FactBox)
@@ -48,28 +41,9 @@ page 50157 Company_Asset_Page
                 ApplicationArea = All;
             }
         }
-
-
     }
-
-    actions
-    {
-        area(Processing)
-        {
-            action(ActionName)
-            {
-
-                trigger OnAction()
-                begin
-
-                end;
-            }
-        }
-    }
-
     var
         IsAvailableEditable: Boolean;
-
 
     trigger OnAfterGetRecord()
     var
@@ -84,6 +58,4 @@ page 50157 Company_Asset_Page
             Rec.Available_Asset := true;
         end;
     end;
-
-
 }

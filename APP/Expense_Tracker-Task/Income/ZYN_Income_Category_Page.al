@@ -4,7 +4,6 @@ page 50133 Income_Category_Page
     //  ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = Income_Category_Table;
-
     layout
     {
         area(Content)
@@ -27,9 +26,6 @@ page 50133 Income_Category_Page
                     Caption = 'Description';
                 }
             }
-
         }
-        
     }
-
 }

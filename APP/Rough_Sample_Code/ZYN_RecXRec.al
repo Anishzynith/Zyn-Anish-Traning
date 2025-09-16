@@ -1,6 +1,5 @@
 pageextension 50136 recxrec extends "Customer Card"
 {
-
     trigger OnOpenPage()
     begin
         Message('On open page (Rec), the address is: %1', Rec.Address);

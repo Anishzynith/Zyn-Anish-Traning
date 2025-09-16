@@ -2,7 +2,6 @@ codeunit 50100 "Post Credit Memo"
 {
     [EventSubscriber(ObjectType::Codeunit, codeunit::"Sales-Post", OnAfterSalesCrMemoHeaderInsert, '', false, false)]
     local procedure OnAfterSalesCrMemoHeaderInsertBegin(var SalesCrMemoHeader: Record "Sales Cr.Memo Header"; SalesHeader: Record "Sales Header"; CommitIsSuppressed: Boolean; WhseShip: Boolean; WhseReceive: Boolean; var TempWhseShptHeader: Record "Warehouse Shipment Header"; var TempWhseRcptHeader: Record "Warehouse Receipt Header")
-
     var
         PostedExtendedTextTable: Record "Sales Invoice Text Code";
         ExtendedTextTable: Record "Sales Invoice Text Code";
@@ -28,13 +27,10 @@ codeunit 50100 "Post Credit Memo"
         ExtendedTextTable.SetRange("No.", SalesHeader."No.");
         ExtendedTextTable.SetRange(Selection, ExtendedTextTable.Selection::BeginningText);
         ExtendedTextTable.DeleteAll();
-      
     end;
 
     [EventSubscriber(ObjectType::Codeunit, codeunit::"Sales-Post", OnAfterSalesCrMemoHeaderInsert, '', false, false)]
     local procedure OnAfterSalesCrMemoHeaderInsertEnd(var SalesCrMemoHeader: Record "Sales Cr.Memo Header"; SalesHeader: Record "Sales Header"; CommitIsSuppressed: Boolean; WhseShip: Boolean; WhseReceive: Boolean; var TempWhseShptHeader: Record "Warehouse Shipment Header"; var TempWhseRcptHeader: Record "Warehouse Receipt Header")
-
-
     var
         PostedExtendedTextTable: Record "Sales Invoice Text Code";
         ExtendedTextTable: Record "Sales Invoice Text Code";
@@ -55,12 +51,10 @@ codeunit 50100 "Post Credit Memo"
                 PostedExtendedTextTable."Text" := ExtendedTextTable."Text";
                 PostedExtendedTextTable.Text := ExtendedTextTable.Text;
                 PostedExtendedTextTable.insert();
-
             until ExtendedTextTable.Next() = 0;
         end;
         ExtendedTextTable.SetRange("No.", SalesHeader."No.");
         ExtendedTextTable.SetRange(Selection, ExtendedTextTable.Selection::EndingText);
         ExtendedTextTable.DeleteAll();
-        
     end;
 }

@@ -13,23 +13,18 @@ codeunit 50108 CustomerChangeTracker
         FieldName: Text[50];
     begin
         CurrentUser := UserId();
- 
         RecRef.GetTable(Rec);
         xRecRef.GetTable(xRec);
- 
         for i := 1 to RecRef.FieldCount do begin
             FieldRef := RecRef.FieldIndex(i);
             xFieldRef := xRecRef.FieldIndex(i);
- 
-           
             begin
                 if format(xFieldRef.Value) = '' then
-                exit;
+                    exit;
                 if Format(FieldRef.Value) <> Format(xFieldRef.Value) then begin
                     FieldName := FieldRef.Name;
- 
                     ModifyLog.Init();
-                    ModifyLog."Entry No.":= 0;
+                    ModifyLog."Entry No." := 0;
                     ModifyLog."No." := Rec."No.";
                     ModifyLog."Field" := FieldName;
                     ModifyLog."OldValue" := Format(xFieldRef.Value);
@@ -40,6 +35,4 @@ codeunit 50108 CustomerChangeTracker
             end;
         end;
     end;
- 
 }
- 

@@ -11,7 +11,6 @@ pageextension 50115 PageExt extends "Business Manager Role Center"
                 ApplicationArea = all;
                 Image = View;
                 RunObject = page "TechnicianList";
-
             }
         }
     }

@@ -1,9 +1,5 @@
-
-
 namespace DefaultNamespace;
-
 using Microsoft.Sales.Customer;
-
 page 50105 ModifyList
 {
     PageType = List;
@@ -12,7 +8,6 @@ page 50105 ModifyList
     //  CardPageId = "ModifyCard";
     ApplicationArea = All;
     Editable = false;
-
     layout
     {
         area(Content)

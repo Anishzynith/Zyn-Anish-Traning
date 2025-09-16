@@ -6,8 +6,6 @@ page 50140 Customer_List_New
     Editable = false;
     ApplicationArea = all;
     UsageCategory = Lists;  //  appear in Tell Me (Search)
-
-
     layout
     {
         area(content)
@@ -17,7 +15,6 @@ page 50140 Customer_List_New
                 field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
-
                 }
                 field("Name"; Rec.Name)
                 {
@@ -40,7 +37,6 @@ page 50140 Customer_List_New
                     ApplicationArea = all;
                 }
             }
-
             part(SalesOrder; SalesOrders)
             {
                 ApplicationArea = all;
@@ -56,10 +52,6 @@ page 50140 Customer_List_New
                 ApplicationArea = all;
                 SubPageLink = "Sell-to Customer Name" = field("Name");
             }
-
         }
-
-
     }
-
 }

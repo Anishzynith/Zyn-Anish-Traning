@@ -3,10 +3,8 @@ codeunit 50145 compchangepublisher
     [IntegrationEvent(false, false)]
     procedure onaddcustomercreated("customer rec": Record Customer)
     begin
-
     end;
 }
-
 codeunit 50116 compchangesubs
 {
     [EventSubscriber(ObjectType::Codeunit, Codeunit::compchangepublisher, 'onaddcustomercreated', '', false, false)]
@@ -15,9 +13,7 @@ codeunit 50116 compchangesubs
         TargetCustomer: Record Customer;
         CompanyName: Text;
     begin
-
         CompanyName := 'ANISH';
-
         if TargetCustomer.ChangeCompany(CompanyName) then begin
             if not TargetCustomer.Get("customer rec"."No.") then begin
                 TargetCustomer.Init();

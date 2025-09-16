@@ -5,7 +5,6 @@ page 50124 Expense_Category_ListPage
     // UsageCategory = Administration;
     SourceTable = Expense_Category_Table;
     //  Editable = false;
-
     layout
     {
         area(Content)
@@ -28,7 +27,6 @@ page 50124 Expense_Category_ListPage
                     Caption = 'Description';
                 }
             }
-
         }
         area(FactBoxes)
         {
@@ -44,9 +42,6 @@ page 50124 Expense_Category_ListPage
                 SubPageLink = "ExpenseCategory_Name" = field("ExpenseCategory_Name");
                 ApplicationArea = All;
             }
-
         }
-
     }
-
 }

@@ -1,13 +1,11 @@
 table 50129 Employee_Leave_Table
 {
     DataClassification = ToBeClassified;
-
     fields
     {
         field(1; Employee_ID; Code[20])
         {
             DataClassification = ToBeClassified;
-
         }
         field(2; Leave_Category_Name; Text[50])
         {
@@ -25,7 +23,6 @@ table 50129 Employee_Leave_Table
                     TotalAllowed := LeaveCategoryRec.Number_of_Days
                 else
                     TotalAllowed := 0;
-
                 // 2. Calculate already used leaves for this employee & category
                 UsedLeaves := 0;
                 LeaveRequestRec.Reset();
@@ -40,15 +37,12 @@ table 50129 Employee_Leave_Table
                 // 3. Update Remaining Balance
                 Remaining_Leave_Balance := TotalAllowed - UsedLeaves;
             end;
-
         }
         field(3; Remaining_Leave_Balance; Integer)
         {
             // DataClassification = ToBeClassified;
-
         }
     }
-
     keys
     {
         key(PK; Employee_ID)
@@ -56,35 +50,4 @@ table 50129 Employee_Leave_Table
             Clustered = true;
         }
     }
-
-    fieldgroups
-    {
-        // Add changes to field groups here
-    }
-
-    var
-        myInt: Integer;
-
-    trigger OnInsert()
-    begin
-
-    end;
-
-    trigger OnModify()
-    begin
-
-    end;
-
-    trigger OnDelete()
-    begin
-
-    end;
-
-    trigger OnRename()
-    begin
-
-    end;
-
-
-
 }

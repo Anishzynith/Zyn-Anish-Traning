@@ -4,7 +4,6 @@ page 50160 Employee_Asset_Card
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = Employee_Table;
-
     layout
     {
         area(Content)
@@ -14,13 +13,9 @@ page 50160 Employee_Asset_Card
                 field(Employee_ID; Rec.Employee_ID)
                 { }
                 field(Serial_NO; Rec.Serial_NO)
-                {
-
-                }
+                { }
                 field(Asset_Status; Rec.Asset_Status)
-                {
-
-                }
+                { }
                 field(Assigned_Date; Rec.Assigned_Date)
                 { Editable = IsAssignedEditable; }
                 field(Returned_Date; Rec.Returned_Date)
@@ -29,28 +24,14 @@ page 50160 Employee_Asset_Card
                     //  Editable = IsAssignedEditable;
                 }
                 field(Lost_Date; Rec.Lost_Date)
-                { Editable = IsLostEditable; }
+                {
+                    Editable = IsLostEditable;
+                }
                 field(Asset_Type; Rec.Asset_Type)
                 { }
             }
         }
     }
-
-    actions
-    {
-        area(Processing)
-        {
-            action(ActionName)
-            {
-
-                trigger OnAction()
-                begin
-
-                end;
-            }
-        }
-    }
-
     var
         myInt: Integer;
 
@@ -74,7 +55,6 @@ page 50160 Employee_Asset_Card
         IsAssignedEditable := false;
         IsReturnedEditable := false;
         IsLostEditable := false;
-
         case Rec.Asset_Status of
             Asset_Status_Enum::Assigned:
                 begin

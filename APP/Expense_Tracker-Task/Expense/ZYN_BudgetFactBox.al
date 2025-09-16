@@ -4,7 +4,6 @@ page 50145 "Category FactBox"
     SourceTable = Expense_Category_Table;
     ApplicationArea = All;
     Caption = 'Category Budget Info';
-
     layout
     {
         area(content)
@@ -16,7 +15,6 @@ page 50145 "Category FactBox"
                     ApplicationArea = All;
                     Caption = 'Current Year';
                     DrillDown = true;
-
                     trigger OnDrillDown()
                     var
                         Budget: Record ExpenseBudget_Table;
@@ -29,13 +27,11 @@ page 50145 "Category FactBox"
                         PAGE.Run(PAGE::Expense_Tracker_Page, Budget);
                     end;
                 }
-
                 field("Budget Current Month"; BudgetCurrentMonth)
                 {
                     ApplicationArea = All;
                     Caption = 'Current Month';
                     DrillDown = true;
-
                     trigger OnDrillDown()
                     var
                         Budget: Record ExpenseBudget_Table;
@@ -48,13 +44,11 @@ page 50145 "Category FactBox"
                         PAGE.Run(PAGE::Expense_Tracker_Page, Budget);
                     end;
                 }
-
                 field("Budget Current Quarter"; BudgetCurrentQuarter)
                 {
                     ApplicationArea = All;
                     Caption = 'Current Quarter';
                     DrillDown = true;
-
                     trigger OnDrillDown()
                     var
                         Budget: Record ExpenseBudget_Table;
@@ -67,13 +61,11 @@ page 50145 "Category FactBox"
                         PAGE.Run(PAGE::Expense_Tracker_Page, Budget);
                     end;
                 }
-
                 field("Budget Current Half Year"; BudgetCurrentHalfYear)
                 {
                     ApplicationArea = All;
                     Caption = 'Current Half-Year';
                     DrillDown = true;
-
                     trigger OnDrillDown()
                     var
                         Budget: Record ExpenseBudget_Table;
@@ -89,7 +81,6 @@ page 50145 "Category FactBox"
             }
         }
     }
-
     trigger OnAfterGetRecord()
     var
         Budget: Record ExpenseBudget_Table;
@@ -102,32 +93,26 @@ page 50145 "Category FactBox"
         Budget.SetRange(From_Date, StartD, EndD);
         Budget.CalcSums(Budget_Amount);
         BudgetCurrentYear := Budget.Budget_Amount;
-
         // Current Month
         GetCMRange(StartD, EndD);
         Budget.SetRange(From_Date, StartD, EndD);
         Budget.CalcSums(Budget_Amount);
         BudgetCurrentMonth := Budget.Budget_Amount;
-
         // Current Quarter
         GetCQRange(StartD, EndD);
         Budget.SetRange(From_Date, StartD, EndD);
         Budget.CalcSums(Budget_Amount);
         BudgetCurrentQuarter := Budget.Budget_Amount;
-
         // Current Half-Year
         GetHalfYearRange(StartD, EndD);
         Budget.SetRange(From_Date, StartD, EndD);
         Budget.CalcSums(Budget_Amount);
         BudgetCurrentHalfYear := Budget.Budget_Amount;
-
         // Current Year Budget
         //  BudgetCurrentYearBudget := GetCurrentYearBudget(Rec.BudgetCategory_Name);
         RemainingBudget := RemainingBudgetMgt.GetRemainingBudget(Rec.ExpenseCategory_Name);
-
         //RemainingBudget := BudgetCurrentYearBudget - BudgetCurrentYear;
     end;
-
     var
         BudgetCurrentYear: Decimal;
         BudgetCurrentMonth: Decimal;
@@ -141,7 +126,6 @@ page 50145 "Category FactBox"
         BudgetCurrentMonthBudget: Decimal;
 
     // ------------------ Local Procedures ------------------
-
     local procedure GetCYRange(var StartDate: Date; var EndDate: Date)
     begin
         StartDate := DMY2DATE(1, 1, Date2DMY(WorkDate(), 3));   // Jan 1 current year
@@ -166,7 +150,6 @@ page 50145 "Category FactBox"
     begin
         y := Date2DMY(WorkDate(), 3);
         q := (Date2DMY(WorkDate(), 2) - 1) DIV 3 + 1; // Quarter number (1–4)
-
         case q of
             1:
                 begin
@@ -198,7 +181,6 @@ page 50145 "Category FactBox"
     begin
         m := Date2DMY(WorkDate(), 2);
         y := Date2DMY(WorkDate(), 3);
-
         if m <= 6 then begin
             StartDate := DMY2DATE(1, 1, y);
             EndDate := DMY2DATE(30, 6, y);

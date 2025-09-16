@@ -7,11 +7,9 @@ codeunit 50121 "Subscription_Renewal_Reminder"
         ReminderDate: Date;
     begin
         ReminderDate := CalcDate('<+15D>', WorkDate);
-
         Renewal_Sub.Reset();
         Renewal_Sub.SetFilter(End_Date, '%1', ReminderDate);
         Renewal_Sub.SetRange(Reminder_Sent, false);
-
         if Renewal_Sub.FindSet() then
             repeat
                 SendReminder(Renewal_Sub);

@@ -1,6 +1,5 @@
 pageextension 50146 LoyaltyPoints extends "Customer Card"
 {
-
     Caption = 'Customer Card';
     layout
     {
@@ -11,7 +10,6 @@ pageextension 50146 LoyaltyPoints extends "Customer Card"
                 Caption = 'Loyalty Points';
                 ApplicationArea = all;
                 Editable = true;
-
             }
         }
     }

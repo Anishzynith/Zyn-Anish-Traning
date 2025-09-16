@@ -13,5 +13,4 @@ pageextension 50106 CompanyPageExt extends Companies
             }
         }
     }
-
 }

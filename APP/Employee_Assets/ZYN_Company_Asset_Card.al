@@ -4,7 +4,6 @@ page 50158 Company_Asset_Card
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = Company_Asset_Table;
-
     layout
     {
         area(Content)
@@ -14,52 +13,30 @@ page 50158 Company_Asset_Card
                 field(Asset_Type; Rec.Asset_Type)
                 {
                     ApplicationArea = All;
-
                 }
                 field(Serial_NO; Rec.Serial_NO)
                 {
                     ApplicationArea = All;
-
                 }
                 field(Procured_Date; Rec.Procured_Date)
                 {
                     ApplicationArea = All;
-
                 }
                 field(Vendor_Name; Rec.Vendor_Name)
                 {
                     ApplicationArea = All;
-
                 }
                 field(Available_Asset; Rec.Available_Asset)
                 {
                     ApplicationArea = All;
                     Editable = IsAvailableEditable;
-
                 }
             }
         }
     }
-
-    actions
-    {
-        area(Processing)
-        {
-            action(ActionName)
-            {
-
-                trigger OnAction()
-                begin
-
-                end;
-            }
-        }
-    }
-
     var
         myInt: Integer;
         IsAvailableEditable: Boolean;
-
 
     trigger OnAfterGetRecord()
     var
@@ -74,6 +51,4 @@ page 50158 Company_Asset_Card
             Rec.Available_Asset := true;
         end;
     end;
-
-
 }

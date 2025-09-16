@@ -5,7 +5,6 @@ page 50146 Recurring_Expense_ListPage
     UsageCategory = Lists;
     SourceTable = Recurring_Expense_Table;
     CardPageId = Recurring_Expense_Card;
-
     layout
     {
         area(Content)
@@ -32,19 +31,12 @@ page 50146 Recurring_Expense_ListPage
                 field(Next_Cycle_Date; Rec.Next_Cycle_Date)
                 {
                     ApplicationArea = All;
-
                 }
                 field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
                 }
             }
-            // area(Factboxes)
-            // {
-
-            // }
         }
-
-
     }
 }

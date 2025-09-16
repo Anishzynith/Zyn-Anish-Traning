@@ -5,7 +5,6 @@ page 50117 Expense_Tracker_Page
     UsageCategory = Lists;
     SourceTable = Expense_Tracker;
     CardPageId = Expense_Tracker_Card;
-
     layout
     {
         area(Content)
@@ -22,7 +21,6 @@ page 50117 Expense_Tracker_Page
                     ApplicationArea = All;
                     Caption = 'Amount';
                 }
-
                 field(Expense_Category; Rec.Expense_Category)
                 {
                     ApplicationArea = All;
@@ -34,9 +32,7 @@ page 50117 Expense_Tracker_Page
                     ApplicationArea = All;
                     Caption = 'Date';
                 }
-
             }
-
         }
         area(FactBoxes)
         {
@@ -46,12 +42,8 @@ page 50117 Expense_Tracker_Page
                 //  SubPageLink = "Expense_Category" = field("Expense_Category");
                 ApplicationArea = All;
             }
-
         }
-
-
     }
-
     actions
     {
         area(Processing)
@@ -80,8 +72,6 @@ page 50117 Expense_Tracker_Page
                 Image = Receipt;
                 RunObject = report "Savings_Report";
             }
-
         }
-
     }
 }

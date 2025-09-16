@@ -1,20 +1,17 @@
 table 50132 Company_Asset_Table
 {
     DataClassification = ToBeClassified;
-
     fields
     {
         field(1; Asset_Type; Text[50])
         {
             DataClassification = ToBeClassified;
             TableRelation = Asset_Table.Asset_Name;
-
         }
         field(2; Serial_NO; Code[20])
         {
             DataClassification = ToBeClassified;
         }
-
         field(3; Procured_Date; Date)
         {
             DataClassification = ToBeClassified;
@@ -35,9 +32,7 @@ table 50132 Company_Asset_Table
         {
             DataClassification = ToBeClassified;
         }
-
     }
-
     keys
     {
         key(PK2; Asset_Type, Serial_NO, ID)
@@ -45,6 +40,4 @@ table 50132 Company_Asset_Table
             Clustered = true;
         }
     }
-
-  
 }

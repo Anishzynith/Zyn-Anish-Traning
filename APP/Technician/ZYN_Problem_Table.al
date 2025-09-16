@@ -23,7 +23,6 @@ table 50112 ProblemTable
         {
             Caption = 'Issue';
             DataClassification = ToBeClassified;
-
         }
         field(50113; "Issuse_Department"; Enum Department)
         {
@@ -36,7 +35,6 @@ table 50112 ProblemTable
             Caption = 'Technician Name';
             TableRelation = TechnicianTable.Tech_Name where(Department = field(Issuse_Department));
             DataClassification = ToBeClassified;
-
             // Editable = true;
         }
         field(5; "Description"; text[100])

@@ -4,7 +4,6 @@ page 50163 Company_Asset_DetailPage
     SourceTable = Employee_Table;
     ApplicationArea = All;
     Caption = 'Available Asset Details';
-
     layout
     {
         area(Content)
@@ -15,12 +14,10 @@ page 50163 Company_Asset_DetailPage
                 {
                     ApplicationArea = All;
                 }
-
                 field(Asset_Type; GetAssetType())
                 {
                     ApplicationArea = All;
                 }
-
                 field(Serial_NO; GetSerialNo())
                 {
                     ApplicationArea = All;
@@ -28,7 +25,6 @@ page 50163 Company_Asset_DetailPage
             }
         }
     }
-
     local procedure GetAssetType(): Text
     var
         AssetRec: Record Company_Asset_Table;

@@ -4,7 +4,6 @@ page 50174 Subscriber_Card
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = Subscriber_Table;
-
     layout
     {
         area(Content)
@@ -12,13 +11,9 @@ page 50174 Subscriber_Card
             group(GroupName)
             {
                 field(ID; Rec.ID)
-                {
-
-                }
+                { }
                 field(Customer_No; Rec.Customer_No)
-                {
-
-                }
+                { }
                 field(Plan_ID; Rec.Plan_ID)
                 { }
                 field(start_Date; Rec.start_Date)
@@ -32,22 +27,4 @@ page 50174 Subscriber_Card
             }
         }
     }
-
-    actions
-    {
-        area(Processing)
-        {
-            action(ActionName)
-            {
-
-                trigger OnAction()
-                begin
-
-                end;
-            }
-        }
-    }
-
-    var
-        myInt: Integer;
 }

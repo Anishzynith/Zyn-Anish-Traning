@@ -4,7 +4,6 @@ report 50101 "Bulk Report"
     ApplicationArea = All;
     //  DefaultRenderingLayout = LayoutName;
     ProcessingOnly = true;
-
     dataset
     {
         dataitem(SalesHeader; "Sales Header")
@@ -17,13 +16,10 @@ report 50101 "Bulk Report"
                 SalesPost.Run(SalesHeader);
                 Counter += 1;
             end;
-
         }
     }
-
     requestpage
     {
-
         layout
         {
             area(Content)
@@ -34,7 +30,6 @@ report 50101 "Bulk Report"
                 }
             }
         }
-
         actions
         {
             area(processing)
@@ -46,8 +41,6 @@ report 50101 "Bulk Report"
             }
         }
     }
-
-
     var
         SalesPost: Codeunit "Sales-Post";
         Counter: Integer;

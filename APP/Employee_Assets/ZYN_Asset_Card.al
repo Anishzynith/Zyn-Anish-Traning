@@ -4,7 +4,6 @@ page 50156 Asset_Card
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = Asset_Table;
-
     layout
     {
         area(Content)
@@ -14,7 +13,6 @@ page 50156 Asset_Card
                 field(Asset_Category; Rec.Asset_Category)
                 {
                     ApplicationArea = all;
-
                 }
                 field(Asset_Name; Rec.Asset_Name)
                 {
@@ -23,22 +21,4 @@ page 50156 Asset_Card
             }
         }
     }
-
-    actions
-    {
-        area(Processing)
-        {
-            action(ActionName)
-            {
-
-                trigger OnAction()
-                begin
-
-                end;
-            }
-        }
-    }
-
-    var
-        myInt: Integer;
 }

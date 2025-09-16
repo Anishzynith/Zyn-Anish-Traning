@@ -15,7 +15,6 @@ pageextension 50100 "posted Invoice Page Ext" extends "Posted Sales Invoice"
             {
                 SubPageLink = "No." = FIELD("No."), Selection = Const(BeginningText), "Document Type" = const("Posted Invoice");
                 ApplicationArea = all;
-
             }
             field("End Text Code"; Rec."Ending Text")
             {
@@ -27,7 +26,6 @@ pageextension 50100 "posted Invoice Page Ext" extends "Posted Sales Invoice"
             {
                 SubPageLink = "No." = FIELD("No."), Selection = const(EndingText), "Document Type" = const("Posted Invoice");
                 ApplicationArea = all;
-
             }
             field("Beginning Text Code"; Rec."Beginning Text Code")
             {
@@ -36,9 +34,7 @@ pageextension 50100 "posted Invoice Page Ext" extends "Posted Sales Invoice"
             field("Ending Text Code"; Rec."Ending Text Code")
             {
                 ApplicationArea = all;
-
             }
-
         }
     }
 }

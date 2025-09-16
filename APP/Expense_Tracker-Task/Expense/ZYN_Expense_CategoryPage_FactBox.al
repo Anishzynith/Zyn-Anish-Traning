@@ -5,7 +5,6 @@ page 50130 "Category Expense FactBox"
     SourceTable = Expense_Category_Table;
     ApplicationArea = All;
     Caption = 'Category Expense Info';
-
     layout
     {
         area(content)
@@ -17,7 +16,6 @@ page 50130 "Category Expense FactBox"
                     ApplicationArea = All;
                     Caption = 'Current Year';
                     DrillDown = true;
-
                     trigger OnDrillDown()
                     var
                         Expense: Record Expense_Tracker;
@@ -30,13 +28,11 @@ page 50130 "Category Expense FactBox"
                         PAGE.Run(PAGE::Expense_Tracker_Page, Expense);
                     end;
                 }
-
                 field("Expense Current Month"; ExpenseCurrentMonth)
                 {
                     ApplicationArea = All;
                     Caption = 'Current Month';
                     DrillDown = true;
-
                     trigger OnDrillDown()
                     var
                         Expense: Record Expense_Tracker;
@@ -49,13 +45,11 @@ page 50130 "Category Expense FactBox"
                         PAGE.Run(PAGE::Expense_Tracker_Page, Expense);
                     end;
                 }
-
                 field("Expense Current Quarter"; ExpenseCurrentQuarter)
                 {
                     ApplicationArea = All;
                     Caption = 'Current Quarter';
                     DrillDown = true;
-
                     trigger OnDrillDown()
                     var
                         Expense: Record Expense_Tracker;
@@ -68,13 +62,11 @@ page 50130 "Category Expense FactBox"
                         PAGE.Run(PAGE::Expense_Tracker_Page, Expense);
                     end;
                 }
-
                 field("Expense Current Half Year"; ExpenseCurrentHalfYear)
                 {
                     ApplicationArea = All;
                     Caption = 'Current Half-Year';
                     DrillDown = true;
-
                     trigger OnDrillDown()
                     var
                         Expense: Record Expense_Tracker;
@@ -87,18 +79,14 @@ page 50130 "Category Expense FactBox"
                         PAGE.Run(PAGE::Expense_Tracker_Page, Expense);
                     end;
                 }
-
-
             }
             field(RemainingBudget; RemainingBudget)
             {
                 ApplicationArea = All;
                 Caption = 'Remaining Budget';
             }
-
         }
     }
-
     trigger OnAfterGetRecord()
     var
         Expense: Record Expense_Tracker;
@@ -111,29 +99,24 @@ page 50130 "Category Expense FactBox"
         Expense.SetRange(ExpenseDate, StartD, EndD);
         Expense.CalcSums(ExpenseAmount);
         ExpenseCurrentYear := Expense.ExpenseAmount;
-
         // Current Month
         GetCMRange(StartD, EndD);
         Expense.SetRange(ExpenseDate, StartD, EndD);
         Expense.CalcSums(ExpenseAmount);
         ExpenseCurrentMonth := Expense.ExpenseAmount;
-
         // Current Quarter
         GetCQRange(StartD, EndD);
         Expense.SetRange(ExpenseDate, StartD, EndD);
         Expense.CalcSums(ExpenseAmount);
         ExpenseCurrentQuarter := Expense.ExpenseAmount;
-
         // Current Half-Year
         GetHalfYearRange(StartD, EndD);
         Expense.SetRange(ExpenseDate, StartD, EndD);
         Expense.CalcSums(ExpenseAmount);
         ExpenseCurrentHalfYear := Expense.ExpenseAmount;
-
         // Current Year Budget
         //  ExpenseCurrentYearBudget := GetCurrentYearBudget(Rec.ExpenseCategory_Name);
         RemainingBudget := RemainingBudgetMgt.GetRemainingBudget(Rec.ExpenseCategory_Name);
-
         //RemainingBudget := ExpenseCurrentYearBudget - ExpenseCurrentYear;
     end;
 
@@ -175,7 +158,6 @@ page 50130 "Category Expense FactBox"
     begin
         y := Date2DMY(WorkDate(), 3);
         q := (Date2DMY(WorkDate(), 2) - 1) DIV 3 + 1; // Quarter number (1–4)
-
         case q of
             1:
                 begin
@@ -238,5 +220,4 @@ page 50130 "Category Expense FactBox"
 }
 
 
-//--------------------------------------------------------------------------
 

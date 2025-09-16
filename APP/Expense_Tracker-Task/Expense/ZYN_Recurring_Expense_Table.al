@@ -1,7 +1,6 @@
 table 50124 Recurring_Expense_Table
 {
     DataClassification = ToBeClassified;
-
     fields
     {
         field(1; Category; code[100])
@@ -22,7 +21,6 @@ table 50124 Recurring_Expense_Table
             begin
                 CalcNextCycleDate();
             end;
-
         }
         field(4; Start_Date; Date)
         {
@@ -60,7 +58,6 @@ table 50124 Recurring_Expense_Table
     begin
         if (Start_Date = 0D) then//or (Recurring_Cycle = Recurring_Cycle::"") then
             exit;
-
         case Recurring_Cycle of
             Recurring_Cycle::Weekly:
                 Next_Cycle_Date := CalcDate('<1W>', Start_Date);
@@ -74,5 +71,4 @@ table 50124 Recurring_Expense_Table
                 Next_Cycle_Date := CalcDate('<1Y>', Start_Date);
         end;
     end;
-
 }

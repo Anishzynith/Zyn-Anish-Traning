@@ -1,7 +1,6 @@
 table 50126 Employee_Table
 {
     DataClassification = ToBeClassified;
-
     fields
     {
         field(1; Employee_ID; Integer)
@@ -13,21 +12,17 @@ table 50126 Employee_Table
         field(2; Employee_Name; Text[100])
         {
             DataClassification = ToBeClassified;
-
         }
         field(3; Role; Enum Role_Enum)
         {
             DataClassification = ToBeClassified;
-
         }
         field(4; Department; Enum Department_Enum)
         {
             DataClassification = ToBeClassified;
-
         }
-        
-    }
 
+    }
     keys
     {
         key(PK; Employee_ID)
@@ -35,33 +30,4 @@ table 50126 Employee_Table
             Clustered = true;
         }
     }
-
-    fieldgroups
-    {
-        // Add changes to field groups here
-    }
-
-    var
-        myInt: Integer;
-
-    trigger OnInsert()
-    begin
-
-    end;
-
-    trigger OnModify()
-    begin
-
-    end;
-
-    trigger OnDelete()
-    begin
-
-    end;
-
-    trigger OnRename()
-    begin
-
-    end;
-
 }

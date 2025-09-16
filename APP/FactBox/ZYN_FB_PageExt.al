@@ -26,7 +26,6 @@ pageextension 50127 "Customer CardExt" extends "Customer List"
             part(Active_Subscription; Customer_Page_Fact)
             {
                 ApplicationArea = all;
-
             }
         }
     }

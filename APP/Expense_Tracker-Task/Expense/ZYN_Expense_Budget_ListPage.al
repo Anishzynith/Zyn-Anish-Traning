@@ -5,7 +5,6 @@ page 50138 ExpenseBudget_ListPage
     UsageCategory = Administration;
     SourceTable = ExpenseBudget_Table;
     CardPageId = ExpenseBudget_Card;
-
     layout
     {
         area(Content)
@@ -31,7 +30,6 @@ page 50138 ExpenseBudget_ListPage
                 {
                     ApplicationArea = All;
                     Caption = 'Budget Amount';
-
                 }
             }
         }

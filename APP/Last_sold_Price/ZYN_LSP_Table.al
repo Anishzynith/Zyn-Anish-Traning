@@ -1,7 +1,6 @@
 table 50104 "Last Sold Price Finder"   //table=50104
 {
     DataClassification = ToBeClassified;
- 
     fields
     {
         field(1; "Customer No"; Code[20])
@@ -24,9 +23,8 @@ table 50104 "Last Sold Price Finder"   //table=50104
             DataClassification = ToBeClassified;
             Caption = 'Last Posting Date';
         }
-        
+
     }
- 
     keys
     {
         key(Pk; "Customer No", "Item No")
@@ -34,6 +32,4 @@ table 50104 "Last Sold Price Finder"   //table=50104
             Clustered = true;
         }
     }
- 
 }
- 

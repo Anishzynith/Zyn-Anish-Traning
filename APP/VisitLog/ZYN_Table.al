@@ -26,7 +26,6 @@ table 50121 "VisitorTable"
             DataClassification = CustomerContent;
         }
     }
-
     keys
     {
         key(PK; "EntryNo", "CustomerNo")
@@ -35,5 +34,4 @@ table 50121 "VisitorTable"
             Clustered = true;
         }
     }
-
 }

@@ -38,7 +38,6 @@ table 50102 ModifyTable
         {
             DataClassification = ToBeClassified;
             Caption = 'User ID';
-
         }
     }
     keys

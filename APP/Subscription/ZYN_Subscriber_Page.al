@@ -5,7 +5,6 @@ page 50173 Subscriber_Page
     UsageCategory = Lists;
     SourceTable = Subscriber_Table;
     CardPageId = Subscriber_Card;
-
     layout
     {
         area(Content)
@@ -13,13 +12,9 @@ page 50173 Subscriber_Page
             repeater(GroupName)
             {
                 field(ID; Rec.ID)
-                {
-
-                }
+                { }
                 field(Customer_No; Rec.Customer_No)
-                {
-
-                }
+                { }
                 field(Plan_ID; Rec.Plan_ID)
                 { }
                 field(start_Date; Rec.start_Date)
@@ -30,10 +25,6 @@ page 50173 Subscriber_Page
                 { }
                 field(Next_Bill_Date; Rec.Next_Bill_Date)
                 { }
-                // field(Plan_Fees; Rec.Plan_Fees)
-                // {
-
-                // }
                 field(Next_Renewal_Date; Rec.Next_Renewal_Date)
                 { }
                 field(Reminder_Sent; Rec.Reminder_Sent)
@@ -41,7 +32,6 @@ page 50173 Subscriber_Page
             }
         }
     }
-
     actions
     {
         area(Processing)

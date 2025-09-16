@@ -5,7 +5,6 @@ page 50171 Sub_Plan_Page
     UsageCategory = Lists;
     SourceTable = Sub_Plan_Table;
     CardPageId = Sub_Plan_Card;
-
     layout
     {
         area(Content)
@@ -13,9 +12,7 @@ page 50171 Sub_Plan_Page
             repeater(GroupName)
             {
                 field(Plan_ID; Rec.Plan_ID)
-                {
-
-                }
+                { }
                 field(Plan_Fees; Rec.Plan_Fees)
                 { }
                 field(Plan_Name; Rec.Plan_Name)
@@ -24,30 +21,6 @@ page 50171 Sub_Plan_Page
                 { }
                 field(Description; Rec.Description)
                 { }
-
-            }
-        }
-        area(Factboxes)
-        {
-
-        }
-    }
-
-    actions
-    {
-        area(Processing)
-        {
-            action(InActive)
-            {
-
-                trigger OnAction()
-                begin
-
-                end;
-            }
-            action(Delete_Plan)
-            {
-
             }
         }
     }

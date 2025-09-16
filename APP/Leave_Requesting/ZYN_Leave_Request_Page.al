@@ -6,7 +6,6 @@ page 50153 Leave_Request_Page
     SourceTable = Leave_Request_Table;
     CardPageId = Leave_Request_Card;
     // Editable = false;
-
     layout
     {
         area(Content)
@@ -25,7 +24,6 @@ page 50153 Leave_Request_Page
                 field(Leave_Category; Rec.Leave_Category_Name)
                 {
                     ApplicationArea = All;
-
                 }
                 field(Start_Date; Rec.Start_Date)
                 {
@@ -43,13 +41,8 @@ page 50153 Leave_Request_Page
                 {
                     ApplicationArea = All;
                     Editable = false;
-
                 }
             }
-        }
-        area(Factboxes)
-        {
-
         }
     }
 
@@ -62,7 +55,6 @@ page 50153 Leave_Request_Page
             {
                 Caption = 'Approve Leave';
                 Image = Approve;
-
                 trigger OnAction()
                 var
                     Notif: Notification;
@@ -71,27 +63,20 @@ page 50153 Leave_Request_Page
                         // Update status
                         Rec.Approval_Status := Rec.Approval_Status::Approved;
                         Rec.Modify(true);
-
                         // Create notification
                         Notif.Message(StrSubstNo('✅ Leave request %1 has been approved.', Rec."Leave_ID"));
-
                         // Make it visible in Role Center bell 🔔
                         Notif.Scope := NotificationScope::LocalScope;
-
                         // Send notification
                         Notif.Send();
                     end else
                         Message('Only leave requests with status Pending can be approved.');
                 end;
             }
-
-
-
         }
     }
     trigger OnAfterGetRecord()
     begin
         Rec.UpdateRemainingBalance();   // ✅ page-level trigger
     end;
-
 }

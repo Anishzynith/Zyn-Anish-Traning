@@ -6,13 +6,11 @@ codeunit 50118 "Leave Approval Processor"
     var
         Notification: Notification;
         LeaveReq: Record "Leave_Request_Table";
-
     begin
         LeaveReq.Reset();
         LeaveReq.SetRange(Approval_Status, LeaveReq.Approval_Status::Approved);
         LeaveReq.SetCurrentKey(SystemModifiedAt);
         LeaveReq.SetAscending(SystemModifiedAt, true);
-
         Clear(Notification);
         Notification.Id := CreateGuid(); //'CDEF7890-ABCD-0123-1234-567890ABCDEF';
         Notification.Scope := NotificationScope::LocalScope;
@@ -23,7 +21,6 @@ codeunit 50118 "Leave Approval Processor"
                            LeaveReq."Employee_ID", LeaveReq."End_Date" - LeaveReq."Start_Date" + 1)
         else
             Notification.Message := 'No approved leave requests found!';
-
         Notification.Send();
     end;
 
@@ -32,7 +29,6 @@ codeunit 50118 "Leave Approval Processor"
         MyNotification: Notification;
         Subscriber: Record "Subscriber_Table";
     begin
-
         Subscriber.setrange(Subscriber_Status, Subscriber.Subscriber_Status::Active);
         Clear(MyNotification);
         MyNotification.Id := CreateGuid();
@@ -41,11 +37,8 @@ codeunit 50118 "Leave Approval Processor"
         MyNotification.Send();
     end;
 }
-
-
 pageextension 50134 RoleCenterExtension extends "O365 Activities"
 {
-
     trigger OnAfterGetRecord()
     var
         MyNotify: Codeunit "Leave Approval Processor";
@@ -54,7 +47,6 @@ pageextension 50134 RoleCenterExtension extends "O365 Activities"
         MyNotify.ShowLeaveBalanceNotification();
         Renew_Reminder.Run();
         CurrPage.Update(false);
-
     end;
 }
 

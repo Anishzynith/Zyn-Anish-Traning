@@ -5,7 +5,6 @@ page 50159 Employee_Asset_Page
     UsageCategory = Lists;
     SourceTable = Employee_Table;
     CardPageId = Employee_Asset_Card;
-
     layout
     {
         area(Content)
@@ -15,28 +14,26 @@ page 50159 Employee_Asset_Page
                 field(Employee_ID; Rec.Employee_ID)
                 { }
                 field(Serial_NO; Rec.Serial_NO)
-                {
-
-                }
+                { }
                 field(Asset_Status; Rec.Asset_Status)
-                {
-
-                }
+                { }
                 field(Assigned_Date; Rec.Assigned_Date)
-                { Editable = IsAssignedEditable; }
+                {
+                    Editable = IsAssignedEditable;
+                }
                 field(Returned_Date; Rec.Returned_Date)
-                { Editable = IsReturnedEditable; }
+                {
+                    Editable = IsReturnedEditable;
+                }
                 field(Lost_Date; Rec.Lost_Date)
-                { Editable = IsLostEditable; }
+                {
+                    Editable = IsLostEditable;
+                }
                 field(Asset_Type; Rec.Asset_Type)
                 { }
                 field(Asset_ID; Rec.Asset_ID)
                 { }
             }
-        }
-        area(Factboxes)
-        {
-
         }
     }
 
@@ -60,7 +57,6 @@ page 50159 Employee_Asset_Page
         IsAssignedEditable := false;
         IsReturnedEditable := false;
         IsLostEditable := false;
-
         case Rec.Asset_Status of
             Asset_Status_Enum::Assigned:
                 begin

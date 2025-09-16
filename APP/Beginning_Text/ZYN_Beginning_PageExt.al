@@ -1,4 +1,3 @@
-
 pageextension 50116 "Sales Invoice Header Ext" extends "Sales Invoice"
 {
     layout
@@ -8,13 +7,10 @@ pageextension 50116 "Sales Invoice Header Ext" extends "Sales Invoice"
             group("Begin Text Code")
             {
                 Caption = 'Begin Text Code';
-
                 field("Beginning Text"; Rec."Beginning Text")
                 {
                     ApplicationArea = All;
                     TableRelation = "Standard Text";
-
-
                 }
                 part(BeginningLine; "Beginning Text Codes")
                 {
@@ -30,8 +26,6 @@ pageextension 50116 "Sales Invoice Header Ext" extends "Sales Invoice"
                         Caption = 'Ending Text';
                         ApplicationArea = all;
                         TableRelation = "Standard Text";
-
-
                     }
                 }
                 part(EndingLine; "Beginning Text Codes")
@@ -41,8 +35,5 @@ pageextension 50116 "Sales Invoice Header Ext" extends "Sales Invoice"
                 }
             }
         }
-
     }
-
-
 }

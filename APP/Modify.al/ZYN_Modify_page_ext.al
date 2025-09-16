@@ -3,7 +3,6 @@ pageextension 50114 ModifypageExt extends "Customer Card"
     actions
     {
         addfirst(processing)
-
         {
             action(Modify)
             {
@@ -11,7 +10,6 @@ pageextension 50114 ModifypageExt extends "Customer Card"
                 Caption = 'Modify';
                 Image = EditLines;
                 RunObject = page "modifyList";
-
             }
         }
     }

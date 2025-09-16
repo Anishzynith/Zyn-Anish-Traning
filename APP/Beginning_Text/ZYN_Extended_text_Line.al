@@ -2,7 +2,6 @@ pageextension 50107 ExtendExtension extends "Extended Text Lines"
 {
     layout
     {
-
         addafter(text)
         {
             field(Bold; Rec.Bold)

@@ -4,7 +4,6 @@ page 50112 "Index Card"
     SourceTable = Percentage_Table;
     ApplicationArea = All;
     Caption = 'Percentage Card';
-
     layout
     {
         area(Content)
@@ -25,7 +24,6 @@ page 50112 "Index Card"
                 {
                     ApplicationArea = All;
                     Caption = 'Percentage Increase';
-
                     trigger OnValidate()
                     begin
                         GenerateLines();
@@ -35,7 +33,6 @@ page 50112 "Index Card"
                 {
                     ApplicationArea = All;
                     Caption = 'Start Year';
-
                     trigger OnValidate()
                     begin
                         GenerateLines();
@@ -45,7 +42,6 @@ page 50112 "Index Card"
                 {
                     ApplicationArea = All;
                     Caption = 'End Year';
-
                     trigger OnValidate()
                     begin
                         GenerateLines();
@@ -68,20 +64,16 @@ page 50112 "Index Card"
         CurrentValue: Decimal;
         NextEntryNo: Integer;
     begin
-
         // Avoid running with incomplete data
         if (Rec.StartYear = 0) or (Rec.EndYear = 0) or (Rec."Percentage Increase" = 0) then
             exit;
-
         // Delete old lines for this Code
         RecListPart.Reset();
         RecListPart.SetRange(Code, Rec.Code);
         RecListPart.DeleteAll();
-
         // Start value
         CurrentValue := 100;
         NextEntryNo := 0; // Start numbering from 1
-
         for Year := Rec.StartYear to Rec.EndYear do begin
             NextEntryNo += 1;
             RecListPart.Init();
@@ -90,11 +82,8 @@ page 50112 "Index Card"
             RecListPart.Year := Year;
             RecListPart.Value := CurrentValue;
             RecListPart.Insert();
-
             // Increase for next year
             CurrentValue := CurrentValue + (CurrentValue * Rec."Percentage Increase" / 100);
-
         end;
     end;
-
 }
