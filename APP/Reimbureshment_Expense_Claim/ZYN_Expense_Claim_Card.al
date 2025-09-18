@@ -20,7 +20,6 @@ page 50178 Expense_Claim_Card
                     trigger OnValidate()
                     begin
                         CalcAvailableAmount();
-                        CurrPage.Update(false);
                     end;
                 }
                 field(Claiming_Category; Rec.Claiming_Category)
@@ -36,15 +35,27 @@ page 50178 Expense_Claim_Card
 
                             Rec.Claiming_Category := ClaimCategoryRec.Claiming_Category;
                             Rec.Subtype := ClaimCategoryRec.SubType; // Autofill Subtype\
-
+                            CalcAvailableAmount();
                         end;
                     end;
 
                     trigger OnValidate()
+                    var
+                        ClaimCategoryRec: Record Claim_Category_Table;
                     begin
+                        // Auto-fill subtype if found
+                        if Rec.Claiming_Category <> '' then begin
+                            ClaimCategoryRec.Reset();
+                            ClaimCategoryRec.SetRange(Claiming_Category, Rec.Claiming_Category);
+                            if ClaimCategoryRec.FindFirst() then
+                                Rec.Subtype := ClaimCategoryRec.SubType;
+                        end;
                         CalcAvailableAmount();
-                        CurrPage.Update(false);
                     end;
+                    // trigger OnValidate()
+                    // begin
+                    //     CalcAvailableAmount();
+                    // end;
                 }
                 field(Claim_Date; Rec.Claim_Date)
                 {
@@ -55,10 +66,9 @@ page 50178 Expense_Claim_Card
                     trigger OnValidate()
                     begin
                         CalcAvailableAmount();
-                        if Rec.Claim_Amount > AvailableAmount then
+                        if Rec.Claim_Amount > Rec.Available_Amount then
                             Error('Claim amount %1 exceeds available balance %2.',
-                                  Rec.Claim_Amount, AvailableAmount);
-                        CurrPage.Update(false);
+                                Rec.Claim_Amount, Rec.Available_Amount);
                     end;
                 }
                 field(Claim_Status; Rec.Claim_Status)
@@ -82,7 +92,6 @@ page 50178 Expense_Claim_Card
                     trigger OnValidate()
                     begin
                         CalcAvailableAmount();
-                        CurrPage.Update(false);
                     end;
                 }
                 field(Bill_FileName; Rec.Bill_FileName)
@@ -90,29 +99,15 @@ page 50178 Expense_Claim_Card
                 }
                 field(Available_Amount; Rec.Available_Amount)
                 {
-                    // Editable = false;
+                    Editable = false;
                 }
             }
         }
     }
-
-    actions
-    {
-        area(Processing)
-        {
-            action(action)
-            {
-
-                trigger OnAction()
-                begin
-
-                end;
-            }
-        }
-    }
-
-    var
-        AvailableAmount: Decimal;
+    trigger OnAfterGetRecord()
+    begin
+        CalcAvailableAmount();
+    end;
 
     local procedure CalcAvailableAmount()
     var
@@ -120,7 +115,7 @@ page 50178 Expense_Claim_Card
         ClaimHistory: Record Expense_Claim_Table;
         UsedAmount: Decimal;
     begin
-        AvailableAmount := 0;
+        Rec.Available_Amount := 0;
         UsedAmount := 0;
 
         if (Rec.Employee_ID = ' ') or (Rec.Claiming_Category = '') or (Rec.SubType = '') then
@@ -131,21 +126,27 @@ page 50178 Expense_Claim_Card
         ClaimCategoryRec.SetRange(Claiming_Category, Rec.Claiming_Category);
         ClaimCategoryRec.SetRange(SubType, Rec.SubType);
 
-        if ClaimCategoryRec.FindFirst() then begin
-            // Get already approved usage for this employee + category + subtype
+        if ClaimCategoryRec.FindSet() then begin
+            // Get already used claims (Approved + optionally Pending_Approval)
             ClaimHistory.Reset();
             ClaimHistory.SetRange(Employee_ID, Rec.Employee_ID);
             ClaimHistory.SetRange(Claiming_Category, Rec.Claiming_Category);
             ClaimHistory.SetRange(SubType, Rec.SubType);
-            ClaimHistory.SetRange(Claim_Status, Claim_Status::Approved);
+
+            // Business rule: block for both Approved + Pending_Approval
+            ClaimHistory.SetFilter(Claim_Status, '%1|%2',
+                                   Claim_Status::Approved,
+                                   Claim_Status::Pending_Approval);
 
             if ClaimHistory.FindSet() then
                 repeat
                     UsedAmount += ClaimHistory.Claim_Amount;
                 until ClaimHistory.Next() = 0;
 
-            AvailableAmount := ClaimCategoryRec.Max_Amount - UsedAmount;
+            Rec.Available_Amount := ClaimCategoryRec.Max_Amount - UsedAmount;
         end;
+
+        CurrPage.UPDATE; // refresh the page to update fields
     end;
 
 }

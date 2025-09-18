@@ -65,12 +65,10 @@ page 50180 Expense_Approval_Request
 
                     // 3. Check Bill Date (must be within last 3 months from Claim_Date)
                     MaxDateAllowed := CalcDate('<-3M>', Rec.Claim_Date); // 3 months before Claim_Date
-
                     if Rec.Bill_Date < MaxDateAllowed then
                         Error(
                           'Bill date %1 is older than 3 months compared to claim date %2.',
                           Rec.Bill_Date, Rec.Claim_Date);
-
 
                     //4. Duplicate check across Approved and Pending Approval
                     ClaimCheckRec.Reset();
