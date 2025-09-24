@@ -1,4 +1,4 @@
-report 50101 "Bulk Report"
+report 50101 "ZYN_Bulk Report"
 {
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;

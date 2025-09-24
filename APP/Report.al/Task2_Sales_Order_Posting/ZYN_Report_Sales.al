@@ -1,14 +1,12 @@
-report 50100 "Orders By Date"
+report 50100 "ZYN_Orders By Date"
 {
-    ProcessingOnly = true; // No print, only logic
+    ProcessingOnly = true;
     ApplicationArea = All;
     UsageCategory = ReportsAndAnalysis;
-    // Loop through Sales Orders
     dataset
     {
         dataitem(SalesHeader; "Sales Header")
         {
-            // This runs for every sales order
             trigger OnAfterGetRecord()
             begin
                 // Check if the date and status match
@@ -20,7 +18,6 @@ report 50100 "Orders By Date"
             end;
         }
     }
-    // Show a page before running, to take date input
     requestpage
     {
         layout
@@ -38,11 +35,10 @@ report 50100 "Orders By Date"
             }
         }
     }
-    // Variables used
     var
         SelectedDate: Date;
         OrderCount: Integer;
-    // Runs after checking all records
+
     trigger OnPostReport()
     begin
         Message('There are %1 open sales orders on %2.', OrderCount, Format(SelectedDate));

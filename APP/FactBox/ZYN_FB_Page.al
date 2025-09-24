@@ -1,4 +1,4 @@
-page 50109 "Customer Sales FactBox"
+page 50109 "ZYN_Customer Sales FactBox"
 {
     PageType = CardPart;
     SourceTable = "Customer";

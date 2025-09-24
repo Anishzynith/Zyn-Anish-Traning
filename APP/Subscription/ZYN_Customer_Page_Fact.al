@@ -1,9 +1,9 @@
-page 50175 Customer_Page_Fact
+page 50175 ZYN_Customer_Page_Fact
 {
     PageType = ListPart;
     ApplicationArea = All;
     UsageCategory = Lists;
-    SourceTable = Subscriber_Table;
+    SourceTable = ZYN_Subscriber_Table;
     layout
     {
         area(Content)
@@ -14,13 +14,13 @@ page 50175 Customer_Page_Fact
                 {
                     ApplicationArea = All;
                     Caption = 'Active Subscriptions';
-                    DrillDownPageId = Subscriber_Page; // custom page (see below)
+                    DrillDownPageId = ZYN_Subscriber_Page; // custom page (see below)
                     trigger OnDrillDown()
                     var
-                        SubRec: Record Subscriber_Table;
+                        SubRec: Record ZYN_Subscriber_Table;
                     begin
                         SubRec.SetRange(Subscriber_Status, SubRec.Subscriber_Status::Active);
-                        PAGE.Run(PAGE::Subscriber_Page, SubRec);
+                        PAGE.Run(PAGE::ZYN_Subscriber_Page, SubRec);
                     end;
                 }
                 field(TotalRevenue; RevenueGenerated())
@@ -61,8 +61,8 @@ page 50175 Customer_Page_Fact
 
     trigger OnAfterGetRecord()
     var
-        MyNotify: Codeunit "Leave Approval Processor";
-        Renew_Reminder: Codeunit "Subscription_Renewal_Reminder";
+        MyNotify: Codeunit "ZYN_Leave Approval Processor";
+        Renew_Reminder: Codeunit "ZYN_SubscriptionRenewalRemind";
     begin
         MyNotify.ShowLeaveBalanceNotification();
         Renew_Reminder.Run();
@@ -71,7 +71,7 @@ page 50175 Customer_Page_Fact
 
     local procedure GetActiveCount(): Integer
     var
-        SubRec: Record Subscriber_Table;
+        SubRec: Record ZYN_Subscriber_Table;
     begin
         SubRec.SetRange(Subscriber_Status, SubRec.Subscriber_Status::Active);
         exit(SubRec.Count);

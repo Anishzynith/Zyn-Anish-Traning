@@ -1,9 +1,9 @@
-page 50174 Subscriber_Card
+page 50174 ZYN_Subscriber_Card
 {
     PageType = Card;
     ApplicationArea = All;
     UsageCategory = Administration;
-    SourceTable = Subscriber_Table;
+    SourceTable = ZYN_Subscriber_Table;
     layout
     {
         area(Content)

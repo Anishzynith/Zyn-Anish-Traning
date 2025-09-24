@@ -1,4 +1,4 @@
-enum 50109 Subscriber_Status_Enum
+enum 50109 ZYN_Subscriber_Status_Enum
 {
     Extensible = true;
     value(0; Active)

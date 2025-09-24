@@ -1,9 +1,9 @@
-page 50172 Sub_Plan_Card
+page 50172 ZYN_Sub_Plan_Card
 {
     PageType = Card;
     ApplicationArea = All;
     UsageCategory = Administration;
-    SourceTable = Sub_Plan_Table;
+    SourceTable = ZYN_Sub_Plan_Table;
     layout
     {
         area(Content)

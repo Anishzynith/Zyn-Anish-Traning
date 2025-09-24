@@ -1,4 +1,4 @@
-table 50134 Subscriber_Table
+table 50134 ZYN_Subscriber_Table
 {
     DataClassification = ToBeClassified;
     fields
@@ -13,10 +13,10 @@ table 50134 Subscriber_Table
         }
         field(3; Plan_ID; Integer)
         {
-            TableRelation = Sub_Plan_Table.Plan_ID;
+            TableRelation = ZYN_Sub_Plan_Table.Plan_ID;
             trigger OnValidate()
             var
-                PlanRec: Record Sub_Plan_Table;
+                PlanRec: Record ZYN_Sub_Plan_Table;
             begin
                 if PlanRec.Get(Plan_ID) then begin
                     Plan_Fees := PlanRec.Plan_Fees;
@@ -41,7 +41,7 @@ table 50134 Subscriber_Table
                 UpdateNextBillDate();
             end;
         }
-        field(6; Subscriber_Status; Enum Subscriber_Status_Enum)
+        field(6; Subscriber_Status; Enum ZYN_Subscriber_Status_Enum)
         {
             DataClassification = ToBeClassified;
             trigger OnValidate()

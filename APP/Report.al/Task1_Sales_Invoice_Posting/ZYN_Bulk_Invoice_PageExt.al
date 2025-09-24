@@ -1,4 +1,4 @@
-pageextension 50126 SalesInvoiceListExt extends "Sales Invoice List"
+pageextension 50126 ZYN_SalesInvoiceListExt extends "Sales Invoice List"
 {
     actions
     {
@@ -11,13 +11,12 @@ pageextension 50126 SalesInvoiceListExt extends "Sales Invoice List"
                 Image = Post;
                 trigger OnAction()
                 var
-                    ReportSelection: Report "Bulk Report";
+                    ReportSelection: Report "ZYN_Bulk Report";
                 begin
                     // Start the processing report
-                    Report.Run(Report::"Bulk Report"); //RunModal
+                    Report.Run(Report::"ZYN_Bulk Report"); //RunModal
                 end;
             }
         }
-        // Add changes to page actions here
     }
 }

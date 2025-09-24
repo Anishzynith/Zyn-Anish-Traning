@@ -1,13 +1,13 @@
-codeunit 50119 "Subscriber Invoice Generator"
+codeunit 50119 "ZYN_SubscriberInvoiceGenerator"
 {
     Subtype = Normal;
     trigger OnRun()
     var
-        Subscriber: Record Subscriber_Table;
+        Subscriber: Record ZYN_Subscriber_Table;
     begin
         // Filter Active Subscribers whose Next_Bill_Date is today
         Subscriber.Reset();
-        Subscriber.SetRange(Subscriber.Subscriber_Status, Enum::Subscriber_Status_Enum::Active);
+        Subscriber.SetRange(Subscriber.Subscriber_Status, Enum::ZYN_Subscriber_Status_Enum::Active);
         Subscriber.SetRange(Subscriber.Next_Bill_Date, WorkDate());
 
         if Subscriber.FindSet() then
@@ -19,12 +19,12 @@ codeunit 50119 "Subscriber Invoice Generator"
             until Subscriber.Next() = 0;
     end;
 
-    procedure CreateSalesInvoice(Subscription: Record Subscriber_Table)
+    procedure CreateSalesInvoice(Subscription: Record ZYN_Subscriber_Table)
     var
         SalesHeader: Record "Sales Header";
         //  Subscriber: Record Subscriber_Table;
         SalesLine: Record "Sales Line";
-        PlanRec: Record "Sub_Plan_Table";
+        PlanRec: Record ZYN_Sub_Plan_Table;
         invoiceno: code[25];
         SubscriberNo: Integer;
     begin
@@ -46,7 +46,7 @@ codeunit 50119 "Subscriber Invoice Generator"
         SalesLine.Insert();
     end;
 
-    procedure UpdateNextBillDate(var Subscriber: Record Subscriber_Table)
+    procedure UpdateNextBillDate(var Subscriber: Record ZYN_Subscriber_Table)
     begin
         // Example logic: monthly billing
         // You can modify this based on Start Date, End Date, or Plan Frequency
@@ -60,10 +60,10 @@ codeunit 50119 "Subscriber Invoice Generator"
         Subscriber.Modify();
     end;
 
-    procedure AddPlanSalesLine(var SalesHeader: Record "Sales Header"; Subscriber: Record Subscriber_Table)
+    procedure AddPlanSalesLine(var SalesHeader: Record "Sales Header"; Subscriber: Record ZYN_Subscriber_Table)
     var
         SalesLine: Record "Sales Line";
-        PlanRec: Record "Sub_Plan_Table";
+        PlanRec: Record ZYN_Sub_Plan_Table;
     begin
         SalesLine.Init();
         SalesLine."Document Type" := SalesLine."Document Type"::Invoice;

@@ -1,11 +1,11 @@
 
 // Approve Leave Action
-codeunit 50118 "Leave Approval Processor"
+codeunit 50118 "ZYN_Leave Approval Processor"
 {
     procedure ShowLeaveBalanceNotification()
     var
         Notification: Notification;
-        LeaveReq: Record "Leave_Request_Table";
+        LeaveReq: Record ZYN_Leave_Request_Table;
     begin
         LeaveReq.Reset();
         LeaveReq.SetRange(Approval_Status, LeaveReq.Approval_Status::Approved);
@@ -27,7 +27,7 @@ codeunit 50118 "Leave Approval Processor"
     procedure ShowSubscriberReminderNotification(CustomerName: Text[100]; EndDate: Date)
     var
         MyNotification: Notification;
-        Subscriber: Record "Subscriber_Table";
+        Subscriber: Record ZYN_Subscriber_Table;
     begin
         Subscriber.setrange(Subscriber_Status, Subscriber.Subscriber_Status::Active);
         Clear(MyNotification);
@@ -41,8 +41,8 @@ pageextension 50134 RoleCenterExtension extends "O365 Activities"
 {
     trigger OnAfterGetRecord()
     var
-        MyNotify: Codeunit "Leave Approval Processor";
-        Renew_Reminder: Codeunit "Subscription_Renewal_Reminder";
+        MyNotify: Codeunit "ZYN_Leave Approval Processor";
+        Renew_Reminder: Codeunit "ZYN_SubscriptionRenewalRemind";
     begin
         MyNotify.ShowLeaveBalanceNotification();
         Renew_Reminder.Run();

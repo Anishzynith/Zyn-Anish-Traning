@@ -1,10 +1,10 @@
-page 50173 Subscriber_Page
+page 50173 ZYN_Subscriber_Page
 {
     PageType = List;
     ApplicationArea = All;
     UsageCategory = Lists;
-    SourceTable = Subscriber_Table;
-    CardPageId = Subscriber_Card;
+    SourceTable = ZYN_Subscriber_Table;
+    CardPageId = ZYN_Subscriber_Card;
     layout
     {
         area(Content)
@@ -44,7 +44,7 @@ page 50173 Subscriber_Page
                 trigger OnAction()
                 var
                     SalesHeader: Record "Sales Header";
-                    SubsInvGenerator: Codeunit "Subscriber Invoice Generator";
+                    SubsInvGenerator: Codeunit "ZYN_SubscriberInvoiceGenerator";
                 begin
                     SalesHeader.Init();
                     SalesHeader."Sell-to Customer No." := Rec.Customer_No;

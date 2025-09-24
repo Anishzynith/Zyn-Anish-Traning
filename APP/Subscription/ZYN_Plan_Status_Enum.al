@@ -1,4 +1,4 @@
-enum 50108 Plan_Status_Enum
+enum 50108 ZYN_Plan_Status_Enum
 {
     Extensible = true;
     value(0; Active)

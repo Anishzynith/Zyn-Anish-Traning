@@ -1,10 +1,10 @@
-page 50171 Sub_Plan_Page
+page 50171 ZYN_Sub_Plan_Page
 {
     PageType = List;
     ApplicationArea = All;
     UsageCategory = Lists;
-    SourceTable = Sub_Plan_Table;
-    CardPageId = Sub_Plan_Card;
+    SourceTable = ZYN_Sub_Plan_Table;
+    CardPageId = ZYN_Sub_Plan_Card;
     layout
     {
         area(Content)

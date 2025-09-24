@@ -1,9 +1,9 @@
-codeunit 50121 "Subscription_Renewal_Reminder"
+codeunit 50121 "ZYN_SubscriptionRenewalRemind"
 {
     Subtype = Normal;
     trigger OnRun()
     var
-        Renewal_Sub: Record Subscriber_Table;
+        Renewal_Sub: Record ZYN_Subscriber_Table;
         ReminderDate: Date;
     begin
         ReminderDate := CalcDate('<+15D>', WorkDate);
@@ -18,10 +18,10 @@ codeunit 50121 "Subscription_Renewal_Reminder"
             until Renewal_Sub.Next() = 0;
     end;
 
-    local procedure SendReminder(Subscription: Record Subscriber_Table)
+    local procedure SendReminder(Subscription: Record ZYN_Subscriber_Table)
     var
         Customer: Record Customer;
-        Reminder: Codeunit "Subscription_Renewal_Reminder";
+        Reminder: Codeunit "ZYN_SubscriptionRenewalRemind";
     begin
         if Customer.Get(Subscription.Customer_No) then begin
             // Use notification instead of Message()

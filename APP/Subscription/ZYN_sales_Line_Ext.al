@@ -1,7 +1,7 @@
-page 50176 "Revenue Cue"
+page 50176 "ZYN_Revenue Cue"
 {
     PageType = CardPart;
-    SourceTable = "Subscriber_Table";
+    SourceTable = ZYN_Subscriber_Table;
     ApplicationArea = All;
     layout
     {

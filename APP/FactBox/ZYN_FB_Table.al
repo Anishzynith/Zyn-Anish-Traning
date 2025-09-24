@@ -1,4 +1,4 @@
-table 50106 "Customer Sales Overview Cue"
+table 50106 "ZYN_Customer SalesOverviewCue"
 {
     DataClassification = ToBeClassified;
     fields

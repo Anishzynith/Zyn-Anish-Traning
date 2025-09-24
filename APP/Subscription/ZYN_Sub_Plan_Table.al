@@ -1,4 +1,4 @@
-table 50133 Sub_Plan_Table
+table 50133 ZYN_Sub_Plan_Table
 {
     DataClassification = ToBeClassified;
     fields
@@ -15,7 +15,7 @@ table 50133 Sub_Plan_Table
         {
             DataClassification = ToBeClassified;
         }
-        field(4; Plan_Status; Enum Plan_Status_Enum)
+        field(4; Plan_Status; Enum ZYN_Plan_Status_Enum)
         {
             DataClassification = ToBeClassified;
         }

@@ -1,4 +1,4 @@
-tableextension 50102 "Sales Inv Header extenstion" extends "Sales Header"
+tableextension 50102 "ZYN_SalesInvHeaderextenstion" extends "Sales Header"
 {
     fields
     {

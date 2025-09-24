@@ -1,4 +1,4 @@
-report 50102 "Sales_InvoiceHeaderandLine"
+report 50102 "ZYN_Sales_InvoiceHeaderandLine"
 {
     UsageCategory = Administration;
     ApplicationArea = All;
@@ -37,17 +37,17 @@ report 50102 "Sales_InvoiceHeaderandLine"
             }
             // Company Info inside Line (if you want to repeat per line)
             // BEGINNING TEXT (OUTSIDE Line loop)
-            dataitem(BeginningText; "Sales Invoice Text Code")
+            dataitem(BeginningText; "ZYN_Sales Invoice Text Code")
             {
-                DataItemTableView = WHERE(Selection = CONST(beginend_enum::BeginningText), "Document Type" = const("Posted Invoice"));
+                DataItemTableView = WHERE(Selection = CONST(ZYN_BeginEnd_Enum::BeginningText), "Document Type" = const("Posted Invoice"));
                 DataItemLink = "No." = field("No.");
                 column(Begin_Text; "Text") { }
                 column(BeginLineNo; lineNO) { }
             }
             // ENDING TEXT (ALSO OUTSIDE Line loop)
-            dataitem(EndingText; "Sales Invoice Text Code")
+            dataitem(EndingText; "ZYN_Sales Invoice Text Code")
             {
-                DataItemTableView = WHERE(Selection = CONST(beginend_enum::EndingText), "Document Type" = const("Posted Invoice"));
+                DataItemTableView = WHERE(Selection = CONST(ZYN_BeginEnd_Enum::EndingText), "Document Type" = const("Posted Invoice"));
                 DataItemLink = "No." = field("No.");
                 column(End_Text; Text) { }
                 column(EndingLineNo; lineNO) { }
