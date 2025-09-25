@@ -6,36 +6,51 @@ tableextension 50107 ZYN_Employee_Asset_Table extends ZYN_Employee_Table
         {
             DataClassification = ToBeClassified;
             TableRelation = ZYN_Employee_Table.Employee_ID;
+            Caption = 'Employee ID';
+            ToolTip = 'Enter Employee ID';
         }
         field(5; Serial_NO; Code[20])
         {
-            //  TableRelation = Company_Asset_Table.Serial_NO;
             DataClassification = ToBeClassified;
+            Caption = 'Serial No.';
+            ToolTip = 'Enter Serial No;';
         }
         field(6; Asset_Status; Enum ZYN_Asset_Status_Enum)
         {
             DataClassification = ToBeClassified;
+            Caption = 'Asset Status';
+            ToolTip = 'Enter Asset Status';
         }
         field(7; Assigned_Date; Date)
         {
             DataClassification = ToBeClassified;
+            Caption = 'Assigned Date';
+            ToolTip = 'Enter Assigned Date';
         }
         field(8; Returned_Date; Date)
         {
             DataClassification = ToBeClassified;
+            Caption = 'Returned Date';
+            ToolTip = 'Enter Retruned Date';
         }
         field(10; Lost_Date; Date)
         {
             DataClassification = ToBeClassified;
+            Caption = 'Lost Date';
+            ToolTip = 'Enter Lost Date';
         }
         field(11; Asset_Type; Text[50])
         {
             DataClassification = ToBeClassified;
             TableRelation = ZYN_Company_Asset_Table.Asset_Type;
+            Caption = 'Asset Type';
+            ToolTip = 'Enter Asset Type';
         }
         field(13; Asset_ID; Code[20])
         {
             DataClassification = SystemMetadata;
+            Caption = 'Asset ID';
+            ToolTip = 'Enter Asset Type';
             trigger OnValidate()
             var
                 AssetRec: Record ZYN_Company_Asset_Table;

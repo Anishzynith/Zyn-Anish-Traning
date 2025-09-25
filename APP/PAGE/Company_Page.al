@@ -16,16 +16,13 @@ page 50182 ZYN_Company_Page
                 field(Name; Rec.Name)
                 {
                 }
-                field("Evaluation Company"; Rec."Evaluation Company")
-                {
-                }
                 field("Display Name"; Rec."Display Name")
                 {
                 }
-                field(Id; Rec.Id)
+                field(IS_Master; Rec.IS_Master)
                 {
                 }
-                field("Business Profile Id"; Rec."Business Profile Id")
+                field(Master_Company; Rec.Master_Company)
                 {
                 }
             }

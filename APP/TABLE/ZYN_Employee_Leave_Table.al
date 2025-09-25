@@ -1,16 +1,21 @@
 table 50129 ZYN_Employee_Leave_Table
 {
     DataClassification = ToBeClassified;
+    Caption = 'ZYN Employee Leave Table';
     fields
     {
         field(1; Employee_ID; Code[20])
         {
             DataClassification = ToBeClassified;
+            Caption = 'Employee ID';
+            ToolTip = 'Enter Employee ID';
         }
         field(2; Leave_Category_Name; Text[50])
         {
             DataClassification = ToBeClassified;
             TableRelation = ZYN_Leave_Category_Table.Leave_Category_Name;
+            Caption = 'Leave Category Name';
+            ToolTip = 'Enter Leave Category Name';
             trigger OnValidate()
             var
                 LeaveCategoryRec: Record ZYN_Leave_Category_Table;
@@ -33,14 +38,15 @@ table 50129 ZYN_Employee_Leave_Table
                     repeat
                         UsedLeaves += (LeaveRequestRec.End_Date - LeaveRequestRec.Start_Date) + 1;
                     until LeaveRequestRec.Next() = 0;
-
                 // 3. Update Remaining Balance
                 Remaining_Leave_Balance := TotalAllowed - UsedLeaves;
             end;
         }
         field(3; Remaining_Leave_Balance; Integer)
         {
-            // DataClassification = ToBeClassified;
+            DataClassification = ToBeClassified;
+            Caption = 'Remaining Leave Balance';
+            ToolTip = 'Enter Leave Balacne';
         }
     }
     keys

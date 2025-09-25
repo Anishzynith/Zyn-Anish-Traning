@@ -33,7 +33,8 @@ codeunit 50135 "ZYN_CompanySyncManagement"
         if Zynith.Get(Rec.Name) then begin
             Zynith.Name := Rec.Name;
             Zynith."Display Name" := Rec."Display Name";
-            Zynith.Modify();
+            Zynith.IS_Master := true;
+            Zynith.Modify(false);
         end;
         SyncControl.SetInProgress(false);
     end;
@@ -77,10 +78,12 @@ codeunit 50135 "ZYN_CompanySyncManagement"
             exit;
         SyncControl.SetInProgress(true);
         if Comp.Get(Rec.Name) then begin
-            Comp."Display Name" := Rec."Display Name";
-            Comp.Modify();
+            if Comp."Display Name" <> Rec."Display Name" then begin
+                Comp."Display Name" := Rec."Display Name";
+                Comp.Modify();
+            end;
+            SyncControl.SetInProgress(false);
         end;
-        SyncControl.SetInProgress(false);
     end;
 
     [EventSubscriber(ObjectType::Table, Database::ZynithCompany, 'OnAfterDeleteEvent', '', false, false)]

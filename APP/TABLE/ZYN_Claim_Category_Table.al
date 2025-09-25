@@ -1,34 +1,46 @@
 table 50136 ZYN_Claim_Category_Table
 {
     DataClassification = ToBeClassified;
+    Caption = 'ZYN Claim Category';
 
     fields
     {
         field(1; Claim_Code; Code[10])
         {
             DataClassification = ToBeClassified;
-
+            Caption = 'Claim Code';
+            ToolTip = 'Enter Claim Code';
         }
         field(2; Claiming_Category; Text[50])
         {
             DataClassification = ToBeClassified;
+            Caption = 'Claiming Category';
+            ToolTip = 'Enter Claiming Categroy';
         }
         field(3; SubType; Text[50])
         {
             DataClassification = ToBeClassified;
+            Caption = 'Sub Type';
+            ToolTip = 'Enter Sub Type';
         }
         field(4; Max_Amount; Decimal)
         {
             DataClassification = ToBeClassified;
+            Caption = 'Max Amount';
+            ToolTip = 'Enter Max Amount';
         }
         field(5; Description; Text[100])
         {
             DataClassification = ToBeClassified;
+            Caption = 'Description';
+            ToolTip = 'Enter Description';
         }
         field(6; Available_Amount; Decimal)
         {
             DataClassification = ToBeClassified;
             Editable = false; // Should not be manually entered
+            caption = 'Available Amount';
+            ToolTip = 'Enter Available Amount';
         }
     }
     keys

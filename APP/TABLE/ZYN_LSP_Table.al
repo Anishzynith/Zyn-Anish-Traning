@@ -1,6 +1,7 @@
 table 50104 "ZYN_Last Sold Price Finder"   //table=50104
 {
     DataClassification = ToBeClassified;
+    Caption = 'ZYN Last Sold Price Finder';
     fields
     {
         field(1; "Customer No"; Code[20])

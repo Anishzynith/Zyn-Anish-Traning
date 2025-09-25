@@ -1,6 +1,7 @@
 table 50128 ZYN_Leave_Request_Table
 {
     DataClassification = ToBeClassified;
+    Caption = 'ZYN Leave Request';
     fields
     {
         field(1; Leave_ID; Integer)
@@ -8,15 +9,18 @@ table 50128 ZYN_Leave_Request_Table
             DataClassification = ToBeClassified;
             InitValue = 0;
             AutoIncrement = true;
+            Caption = 'Leave ID';
         }
         field(2; Employee_ID; Code[20])
         {
             DataClassification = ToBeClassified;
             TableRelation = ZYN_Employee_Table.Employee_ID;
+            Caption = 'Employee ID';
         }
         field(3; Leave_Category_Name; Text[50])
         {
             DataClassification = ToBeClassified;
+            Caption = 'Leave Category Name';
             TableRelation = ZYN_Leave_Category_Table.Leave_Category_Name;
             trigger OnValidate()
             begin
@@ -26,10 +30,12 @@ table 50128 ZYN_Leave_Request_Table
         field(4; Reason_for_Leave; Text[250])
         {
             DataClassification = ToBeClassified;
+            Caption = 'Reason For Leave';
         }
         field(5; Start_Date; Date)
         {
             DataClassification = ToBeClassified;
+            Caption = 'Start Date';
             trigger OnValidate()
             begin
                 if Start_Date = 0D then
@@ -41,6 +47,7 @@ table 50128 ZYN_Leave_Request_Table
         }
         field(6; End_Date; Date)
         {
+            Caption = 'End Date';
             DataClassification = ToBeClassified;
             trigger OnValidate()
             begin
@@ -54,6 +61,7 @@ table 50128 ZYN_Leave_Request_Table
         field(7; Approval_Status; Enum ZYN_Leave_Status_Enum)
         {
             DataClassification = ToBeClassified;
+            Caption = 'Approval Status';
             trigger OnValidate()
             begin
                 if Rec.Approval_Status = Rec.Approval_Status::Approved then
@@ -63,10 +71,12 @@ table 50128 ZYN_Leave_Request_Table
         field(8; Remaining_Leave_Balance; Integer)
         {
             DataClassification = ToBeClassified;
+            Caption = 'Remaining Leave Balance';
         }
         field(9; Leave_Days; Integer)
         {
             DataClassification = ToBeClassified;
+            Caption = 'Leave Days';
         }
     }
     keys

@@ -5,6 +5,7 @@ page 50136 ZYN_Income_Tracker_Page
     UsageCategory = Lists;
     SourceTable = ZYN_Income_Tracker;
     CardPageId = ZYN_Income_Tracker_Card;
+    Caption = 'ZYN Income Tracker';
     layout
     {
         area(Content)
