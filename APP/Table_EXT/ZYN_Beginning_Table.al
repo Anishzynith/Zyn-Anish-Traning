@@ -1,4 +1,4 @@
-table 50110 "ZYN_Sales Invoice Text Code"
+table 50138 "ZYN_Sales Invoice Text Code"
 
 {
     DataClassification = ToBeClassified;

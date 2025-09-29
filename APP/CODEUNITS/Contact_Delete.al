@@ -81,53 +81,6 @@ codeunit 50144 "ContactDeleteSync"
         exit(false);
     end;
 
-    // --------------------------
-    // Delete contact and related records in slave companies
-    // --------------------------
-    // local procedure DeleteContactAndRelatedInSlaves(ContactNo: Code[20])
-    // var
-    //     SlaveComp: Record ZynithCompany;
-    //     ContactRec: Record Contact;
-    //     Cust: Record Customer;
-    //     Vend: Record Vendor;
-    //     CustVendRel: Record "Contact Business Relation";
-    // begin
-    //     SlaveComp.SetRange(Is_Master, false);
-    //     if SlaveComp.FindSet() then
-    //         repeat
-    //             // Delete contact
-    //             ContactRec.ChangeCompany(SlaveComp.Name);
-
-    //             // Delete related customers
-    //             Cust.ChangeCompany(SlaveComp.Name);
-    //             Cust.SetRange("Primary Contact No.", ContactNo);
-    //             if Cust.FindSet() then
-    //                 repeat
-    //                     Cust.Delete(true);
-    //                 until Cust.Next() = 0;
-
-    //             // Delete related vendors
-    //             Vend.ChangeCompany(SlaveComp.Name);
-    //             Vend.SetRange("Primary Contact No.", ContactNo);
-    //             if Vend.FindSet() then
-    //                 repeat
-    //                     Vend.Delete(true);
-    //                 until Vend.Next() = 0;
-
-    //             // Delete related business relations
-    //             CustVendRel.ChangeCompany(SlaveComp.Name);
-    //             CustVendRel.SetRange("Contact No.", ContactNo);
-    //             if CustVendRel.FindSet() then
-    //                 repeat
-    //                     CustVendRel.Delete(true);
-    //                 until CustVendRel.Next() = 0;
-    //             if ContactRec.Get(ContactNo) then
-    //                 ContactRec.Delete(true);
-
-
-    //         until SlaveComp.Next() = 0;
-    // end;
-
     local procedure SyncDeleteToSlaves(ContactNo: Code[20])
     var
         MyCompany: Record ZynithCompany;
@@ -147,7 +100,7 @@ codeunit 50144 "ContactDeleteSync"
         IsSyncing := true;
 
         SlaveCompany.SetRange(Is_Master, false);
-        SlaveCompany.SetFilter(Master_Company, '%1', MyCompany.Name);
+        SlaveCompany.SetFilter(Master_Company_Name, '%1', MyCompany.Name);
 
         if SlaveCompany.FindSet() then
             repeat

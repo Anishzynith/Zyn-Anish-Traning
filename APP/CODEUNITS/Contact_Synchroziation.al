@@ -28,10 +28,10 @@ codeunit 50117 ZYN_ContactSync
         if not CurrentCompany."Is_Master" then
             exit;
         DependentCompany.Reset();
-        DependentCompany.SetRange("Master_Company", CurrentCompany.Name);
+        DependentCompany.SetRange(Master_Company_Name, CurrentCompany.Name);
         if DependentCompany.FindSet() then
             repeat
-                if DependentCompany."Master_Company" <> '' then begin
+                if DependentCompany.Master_Company_Name <> '' then begin
                     TargetContact.ChangeCompany(DependentCompany.Name);
                     if not TargetContact.Get(Rec."No.") then begin
                         TargetContact.Init();
@@ -41,7 +41,7 @@ codeunit 50117 ZYN_ContactSync
                 end;
             until DependentCompany.Next() = 0;
     end;
-    // Prevent deletion in slave company
+    // Prevent deletion in slave company`
 
     [EventSubscriber(ObjectType::Table, Database::Contact, 'OnBeforeDeleteEvent', '', true, true)]
     local procedure ContactOnBeforeDelete(var Rec: Record Contact; RunTrigger: Boolean)
@@ -49,7 +49,7 @@ codeunit 50117 ZYN_ContactSync
         ZynCompany: Record ZynithCompany;
     begin
         if ZynCompany.Get(COMPANYNAME) then begin
-            if (not ZynCompany."Is_Master") and (ZynCompany."Master_Company" <> '') then
+            if (not ZynCompany."Is_Master") and (ZynCompany.Master_Company_Name <> '') then
                 Error(DeleteContactInSlaveErr);
         end;
     end;
@@ -72,7 +72,7 @@ codeunit 50117 ZYN_ContactSync
         if MasterCompany.Get(COMPANYNAME) then begin
             if MasterCompany."Is_Master" then begin
                 SlaveCompany.Reset();
-                SlaveCompany.SetRange("Master_Company", MasterCompany.Name);
+                SlaveCompany.SetRange(Master_Company_Name, MasterCompany.Name);
                 if SlaveCompany.FindSet() then
                     repeat
                         SlaveContact.ChangeCompany(SlaveCompany.Name);

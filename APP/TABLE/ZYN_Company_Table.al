@@ -42,7 +42,7 @@ table 50137 ZynithCompany
                 end;
             end;
         }
-        field(4; Master_Company; Text[250])
+        field(4; Master_Company_Name; Text[250])
         {
             Caption = 'Master Company';
             ToolTip = 'Enter Master Company';
@@ -51,15 +51,15 @@ table 50137 ZynithCompany
             var
                 MasterComp: Record ZynithCompany;
             begin
-                if Master_Company = '' then
+                if Master_Company_Name = '' then
                     exit;
 
                 // check if this company exists and is marked as master
-                if not MasterComp.Get(Master_Company) then
-                    Error('The company "%1" does not exist in ZynithCompany.', Master_Company);
+                if not MasterComp.Get(Master_Company_Name) then
+                    Error('The company "%1" does not exist in ZynithCompany.', Master_Company_Name);
 
                 if not MasterComp.IS_Master then
-                    Error('The company "%1" is not marked as a Master Company.', Master_Company);
+                    Error('The company "%1" is not marked as a Master Company.', Master_Company_Name);
             end;
         }
     }

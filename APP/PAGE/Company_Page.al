@@ -22,7 +22,7 @@ page 50182 ZYN_Company_Page
                 field(IS_Master; Rec.IS_Master)
                 {
                 }
-                field(Master_Company; Rec.Master_Company)
+                field(Master_Company; Rec.Master_Company_Name)
                 {
                 }
             }
