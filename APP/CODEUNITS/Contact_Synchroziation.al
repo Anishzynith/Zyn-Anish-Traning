@@ -1,4 +1,4 @@
-codeunit 50117 "ContactSyncMgt."
+codeunit 50117 ZYN_ContactSync
 {
     var
         IsSyncing: Boolean;
@@ -15,7 +15,7 @@ codeunit 50117 "ContactSyncMgt."
         if not ZynithCompany.FindFirst() then
             Error('Cannot create contact. The company "%1" is not Master.', CompanyName);
     end;
-    // ---------------------------------------------------------------------------------------------------
+
     [EventSubscriber(ObjectType::Table, Database::Contact, 'OnAfterInsertEvent', '', true, true)]
     local procedure InsertContactRecord(var Rec: Record Contact)
     var
@@ -41,53 +41,6 @@ codeunit 50117 "ContactSyncMgt."
                 end;
             until DependentCompany.Next() = 0;
     end;
-
-    // -----------------------------------------------------------------------------------------------------
-
-    // [EventSubscriber(ObjectType::Table, Database::Contact, 'OnAfterModifyEvent', '', true, true)]
-    // local procedure ContactOnAfterModify(var Rec: Record Contact; RunTrigger: Boolean)
-    // var
-    //     CurrentCompany: Record Zynith_Company;
-    //     SlaveCompany: Record Zynith_Company;
-    // begin
-    //     // Only master company runs the sync
-    //     if not CurrentCompany.Get(CompanyName()) then
-    //         exit;
-    //     if not CurrentCompany."Is Master" then
-    //         exit;
-
-    //     // Update all slave companies
-    //     SlaveCompany.Reset();
-    //     SlaveCompany.SetRange("Master Company", CompanyName());
-    //     if SlaveCompany.FindSet() then
-    //         repeat
-    //             UpdateContactInSlaveCompany(Rec, SlaveCompany.Name);
-    //         until SlaveCompany.Next() = 0;
-    // end;
-
-    // ---------------------------------------------------------------------------------------------------
-    // local procedure UpdateContactInSlaveCompany(SourceContact: Record Contact; TargetCompany: Text)
-    // var
-    //     ContactSlave: Record Contact;
-    // begin
-    //     ContactSlave.ChangeCompany(TargetCompany);
-
-    //     if ContactSlave.Get(SourceContact."No.") then begin
-    //         // Only modify if the Modified Date is different
-    //         if ContactSlave.SystemModifiedAt <> SourceContact.SystemModifiedAt then begin
-    //             ContactSlave.TransferFields(SourceContact);
-    //             ContactSlave.Modify(false); // false prevents recursion
-    //         end;
-    //     end else begin
-    //         // Insert if it does not exist
-    //         ContactSlave.Init();
-    //         ContactSlave.TransferFields(SourceContact);
-    //         ContactSlave.Insert(true);
-    //     end;
-    // end;
-
-    //  ---------------------------------------------------------------------------------------------------
-    var
     // Prevent deletion in slave company
 
     [EventSubscriber(ObjectType::Table, Database::Contact, 'OnBeforeDeleteEvent', '', true, true)]
@@ -100,8 +53,6 @@ codeunit 50117 "ContactSyncMgt."
                 Error(DeleteContactInSlaveErr);
         end;
     end;
-
-    // ----------------------------------------------------------------------------------------------------------
 
     [EventSubscriber(ObjectType::Table, Database::Contact, 'OnAfterModifyEvent', '', true, true)]
     local procedure ContactOnAfterModify(var Rec: Record Contact; var xRec: Record Contact; RunTrigger: Boolean)

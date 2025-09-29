@@ -27,6 +27,7 @@ table 50137 ZynithCompany
         field(3; IS_Master; Boolean)
         {
             Caption = 'Is Master';
+            ToolTip = 'Select as Master Company';
             DataClassification = ToBeClassified;
             trigger OnValidate()
             var
@@ -44,6 +45,7 @@ table 50137 ZynithCompany
         field(4; Master_Company; Text[250])
         {
             Caption = 'Master Company';
+            ToolTip = 'Enter Master Company';
             DataClassification = ToBeClassified;
             trigger OnValidate()
             var
